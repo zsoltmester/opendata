@@ -2,7 +2,6 @@
 
 ## Steps
 
-- Oldaltérkép és végpontok
 - Oldalvázlatok
 - Modellek leírása diagramokkal: adat, adatbázis és állapot
 - Dinamikus működés bemutatása szekvenciadiagramal

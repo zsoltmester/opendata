@@ -49,3 +49,77 @@ Felhasználóként egy adathalmaz bejegyzés módosítása:
 4. Elmenti vagy elveti a változásokat.
 
 ![Felhasználóként egy adathalmaz bejegyzés módosítása](docs/images/use-case-example.png)
+
+## Tervezés
+
+### Oldalak
+
+#### Fejléc
+
+Minden oldalon található egy fejléc, amin az alkalmazás logóján kívűl a következők vannak:
+
+##### Vendégeknek
+
+- Bejelentkezés gomb
+- Regisztráció gomb
+
+##### Felhasználóknak
+
+- Profil gomb, melynek felirata a felhasználónév
+- Kijelentkezés gomb
+
+##### Adminisztrátoroknak
+
+Ugyanaz, mint a felhasználóknak, plusz:
+- Felhasználók böngészése gomb
+
+#### Oldaltérkép
+
+Az oldaltérkép a fejléc alatti tartalomra vonatkozik.
+
+##### Vendégeknek
+
+- Főoldal: adathalmaz bejegyzések böngészése és keresése
+- -> Adathalmaz bejegyzés megtekintése oldal
+- Regisztrációs oldal
+
+##### Felhasználóknak
+
+- Főoldal: adathalmaz bejegyzések böngészése és keresése
+- -> Adathalmaz bejegyzés megtekintése és értékelése oldal; saját bejegyzés esetén azt törölni is itt lehet
+- -> Adathalmaz hozzáadása oldal
+- -> Adathalmaz szerkesztése oldal
+- Profil megtekintése és szerkesztése oldal
+
+##### Adminisztrátoroknak
+
+- Főoldal: adathalmaz bejegyzések böngészése és keresése
+- -> Adathalmaz bejegyzés megtekintése és értékelése oldal; törölni a bejegyzést vagy az egyes értékeléseket is itt lehet
+- -> Adathalmaz hozzáadása oldal
+- -> Adathalmaz szerkesztése oldal
+- Profil megtekintése és szerkesztése oldal
+- Felhasználók böngészése és kitiltása oldal
+
+#### Oldalvázlatok
+
+TODO
+
+#### Végpontok
+
+- `GET /:query`: főoldal, opcionális keresési paraméterrel
+- `POST /login`: bejelentkezési adatok beküldése
+- `GET /signup`: regisztrációs oldal
+- `POST /signup`: regisztrációs adatok beküldése
+- `GET /logout`: kijelentkezési szándék beküldése
+- `GET /profile`: profil megtekintése és szerkesztése oldal
+- `POST /profile`: szerkesztett profil adatok beküldése
+- `GET /user`: felhasználók böngészése és kitiltása oldal
+- `POST /user`: felhasználó törlése szándék beküldése
+- `GET /:id`: adathalmaz bejegyzés megtekintése oldal
+- `GET /:id/delete`: bejegyzés törlése szándék beküldése
+- `GET /:id/modify`: bejegyzés szerkesztése oldal
+- `POST /:id/modify`: szerkesztett bejegyzési adatok beküldése
+- `POST /:id/rate`: értékelés adatainak beküldése
+- `GET /:id/rate/:rate_id/delete`: értékelés törlése szándék beküldése
+- `GET /new`: bejegyzés létrehozása oldal
+- `POST /new`: bejegyzés létrehozásához szükséges adatok beküldése
