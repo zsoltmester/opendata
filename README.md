@@ -65,6 +65,7 @@ Minden oldalon található egy fejléc, amin az alkalmazás logóján kívűl a 
 
 ##### Felhasználóknak
 
+- Adathalmaz hozzáadása
 - Profil gomb, melynek felirata a felhasználónév
 - Kijelentkezés gomb
 
@@ -102,7 +103,29 @@ Az oldaltérkép a fejléc alatti tartalomra vonatkozik.
 
 #### Oldalvázlatok
 
-TODO
+##### Főoldal
+
+![Főoldal](docs/images/main.jpg)
+
+##### Adathalmaz bejegyzés megtekintése és értékelése
+
+![Adathalmaz bejegyzés megtekintése és értékelése oldal](docs/images/details.jpg)
+
+##### Adathalmaz hozzáadása vagy szerkesztése
+
+![Adathalmaz hozzáadása vagy szerkesztése](docs/images/create-or-edit.jpg)
+
+##### Regisztrációs
+
+![Regisztrációs](docs/images/sign-up.jpg)
+
+##### Profil megtekintése és szerkesztése
+
+![Profil megtekintése és szerkesztése](docs/images/profile.jpg)
+
+##### Felhasználók böngészése és kitiltása
+
+![Felhasználók böngészése és kitiltása](docs/images/users.jpg)
 
 #### Végpontok
 
