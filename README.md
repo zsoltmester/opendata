@@ -156,8 +156,8 @@ Felugró ablakokban lesz:
 
 #### Dinamikus működés
 
-![Dinamikus működés 1](docs/images/dynamic-1.svg)
-![Dinamikus működés 1](docs/images/dynamic-2.svg)
+![Dinamikus működés 1](docs/images/dynamic-1.png)
+![Dinamikus működés 1](docs/images/dynamic-2.png)
 
 ### Entitások
 
