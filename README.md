@@ -154,7 +154,12 @@ Felugró ablakokban lesz:
 - `GET /new`: bejegyzés létrehozása oldal
 - `POST /new`: bejegyzés létrehozásához szükséges adatok beküldése
 
-### Osztályok
+#### Dinamikus működés
+
+![Dinamikus működés 1](docs/images/dynamic-1.svg)
+![Dinamikus működés 1](docs/images/dynamic-2.svg)
+
+### Entitások
 
 #### Adatmodell
 
