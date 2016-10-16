@@ -101,6 +101,13 @@ Az oldaltérkép a fejléc alatti tartalomra vonatkozik.
 - Profil megtekintése és szerkesztése oldal
 - Felhasználók böngészése és kitiltása oldal
 
+#### Felugró ablakok
+
+Felugró ablakokban lesz:
+- a bejelentkezés,
+- az értékelés adatainak kitöltése,
+- az összes megerősítő kérdés (*Tényleg kitörlöd ezt a bejegyzést?*, stb).
+
 #### Oldalvázlatok
 
 ##### Főoldal
@@ -142,7 +149,17 @@ Az oldaltérkép a fejléc alatti tartalomra vonatkozik.
 - `GET /:id/delete`: bejegyzés törlése szándék beküldése
 - `GET /:id/modify`: bejegyzés szerkesztése oldal
 - `POST /:id/modify`: szerkesztett bejegyzési adatok beküldése
-- `POST /:id/rate`: értékelés adatainak beküldése
-- `GET /:id/rate/:rate_id/delete`: értékelés törlése szándék beküldése
+- `POST /:id/review/new`: értékelés adatainak beküldése
+- `GET /:id/review/:review_id/delete`: értékelés törlése szándék beküldése
 - `GET /new`: bejegyzés létrehozása oldal
 - `POST /new`: bejegyzés létrehozásához szükséges adatok beküldése
+
+### Osztályok
+
+#### Adatmodell
+
+![Adatmodell](docs/images/data-modell.png)
+
+#### Adatbázismodell
+
+![Adatbázismodell](docs/images/database-modell.png)
