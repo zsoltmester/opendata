@@ -2,12 +2,14 @@
 
 Szerver oldal elkészítése Node.js és Adonis.js segítségével. Nem kell a 2. beadandóban teszt, se a herokura nem kell feltölteni. Ettől függetlenül szeretném azt, hogy publikusan is elérhető legyen az alkalmazás.
 
-A dokumentációhoz hozzá kell adni egy *Implementáció* fejezetet:
-- Fejlesztői környezet bemutatása
-- Könyvtárstruktúrában lévő mappák funkciójának bemutatása
-
 Implementálás:
-- Fejlesztői környezet felállítása és dokumentálása
+- Fejléc
+- Főoldal authorizáció nélkül, vendégeknek
+- Adatbázis az adathalmaz bejegyzéseknek, random adattal
+- Adatbázis a userekhez, random adattal
+- A autentikációhoz kapcsolódó oldalak és controllerek elkészítése
+- Az autentikáció és session bekötése
+- Admin módban a user listázó és törlő funkciók elkészítése
 - ...
 
 # Technical reference
@@ -193,3 +195,7 @@ A szerveroldal Node.js alapon működik és az AdonisJs MVC framework segítség
 ### Könyvtárstruktúra
 
 Az alkalmazást a repository **webapp** könyvtárában találod meg. A könyvtárstruktúrát az AdonisJs definiálta, amiről [itt](http://www.adonisjs.com/docs/3.1/directory-structure) olvashatsz.
+
+### Fejlesztői környezet
+
+Bármilyen szövegszerkesztő használható a fejlesztéshez. Én [Atom](https://atom.io/)-ot használtam.
