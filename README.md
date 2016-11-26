@@ -7,10 +7,14 @@ A dokumentációhoz hozzá kell adni egy *Implementáció* fejezetet:
 - Könyvtárstruktúrában lévő mappák funkciójának bemutatása
 
 Implementálás:
-- Node.js és Adonis.js feltelepítése
 - Könyvtárstruktúra létrehozása és dokumentálása
 - Fejlesztői környezet felállítása és dokumentálása
 - ...
+
+# Technical reference
+
+- http://webprogramozas.inf.elte.hu/tananyag/jstech/slides/language.html#/javascript-technologies
+- http://www.adonisjs.com/docs/3.1/installation
 
 # Open Data Hub
 
