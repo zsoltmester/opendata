@@ -11,31 +11,32 @@ const Http = exports = module.exports = {}
  * @param  {Object} request
  * @param  {Object} response
  */
-Http.handleError = function * (error, request, response) {
-  /**
-   * DEVELOPMENT REPORTER
-   */
-  if (Env.get('NODE_ENV') === 'development') {
-    const ouch = new Ouch().pushHandler(
-      new Ouch.handlers.PrettyPageHandler('blue', null, 'sublime')
-    )
-    ouch.handleException(error, request.request, response.response, (output) => {
-      console.error(error.stack)
-    })
-    return
-  }
+Http.handleError = function*(error, request, response) {
+	/**
+	 * DEVELOPMENT REPORTER
+	 */
+	if (Env.get('NODE_ENV') === 'development') {
+		const ouch = new Ouch().pushHandler(
+			new Ouch.handlers.PrettyPageHandler('blue', null, 'sublime')
+		)
+		ouch.handleException(error, request.request, response.response, (output) => {
+			console.error(error.stack)
+		})
+		return
+	}
 
-  /**
-   * PRODUCTION REPORTER
-   */
-  const status = error.status || 500
-  console.error(error.stack)
-  yield response.status(status).sendView('errors/index', {error})
+	/**
+	 * PRODUCTION REPORTER
+	 */
+	const status = error.status || 500
+	console.error(error.stack)
+	yield response.status(status).sendView('errors/index', {
+		error
+	})
 }
 
 /**
  * listener for Http.start event, emitted after
  * starting http server.
  */
-Http.onStart = function () {
-}
+Http.onStart = function() {}
