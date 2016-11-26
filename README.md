@@ -1,3 +1,17 @@
+# TODO
+
+Szerver oldal elkészítése Node.js és Adonis.js segítségével. Nem kell a 2. beadandóban teszt, se a herokura nem kell feltölteni. Ettől függetlenül szeretném azt, hogy publikusan is elérhető legyen az alkalmazás.
+
+A dokumentációhoz hozzá kell adni egy *Implementáció* fejezetet:
+- Fejlesztői környezet bemutatása
+- Könyvtárstruktúrában lévő mappák funkciójának bemutatása
+
+Implementálás:
+- Node.js és Adonis.js feltelepítése
+- Könyvtárstruktúra létrehozása és dokumentálása
+- Fejlesztői környezet felállítása és dokumentálása
+- ...
+
 # Open Data Hub
 
 Az *Open Data Hub* egy webes alkalmazás, melyen gyűjteni és rendszerezni tudjuk a nyílt adathalmazokat.
