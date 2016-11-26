@@ -174,7 +174,7 @@ Felugró ablakokban lesz:
 #### Dinamikus működés
 
 ![Dinamikus működés 1](docs/images/dynamic-1.png)
-![Dinamikus működés 1](docs/images/dynamic-2.png)
+![Dinamikus működés 2](docs/images/dynamic-2.png)
 
 ### Entitások
 
