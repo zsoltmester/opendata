@@ -7,14 +7,13 @@ A dokumentációhoz hozzá kell adni egy *Implementáció* fejezetet:
 - Könyvtárstruktúrában lévő mappák funkciójának bemutatása
 
 Implementálás:
-- Könyvtárstruktúra létrehozása és dokumentálása
 - Fejlesztői környezet felállítása és dokumentálása
 - ...
 
 # Technical reference
 
-- http://webprogramozas.inf.elte.hu/tananyag/jstech/slides/language.html#/javascript-technologies
-- http://www.adonisjs.com/docs/3.1/installation
+- http://webprogramozas.inf.elte.hu/alkfejl.php
+- http://www.adonisjs.com/docs/3.1
 
 # Open Data Hub
 
@@ -186,3 +185,11 @@ Felugró ablakokban lesz:
 #### Adatbázismodell
 
 ![Adatbázismodell](docs/images/database-modell.png)
+
+## Implementáció
+
+A szerveroldal Node.js alapon működik és az AdonisJs MVC framework segítségével épül fel.
+
+### Könyvtárstruktúra
+
+Az alkalmazást a repository **webapp** könyvtárában találod meg. A könyvtárstruktúrát az AdonisJs definiálta, amiről [itt](http://www.adonisjs.com/docs/3.1/directory-structure) olvashatsz.
