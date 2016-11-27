@@ -16,6 +16,13 @@ const Factory = use('Factory')
 Factory.blueprint('App/Model/Dataset', (fake) => {
 	return {
 		summary: fake.sentence(),
-		description: fake.paragraph()
+		description: fake.paragraph(),
+		format: fake.word(),
+		link: fake.url(),
+		access: fake.paragraph(),
+		rate: fake.floating({
+			min: 0,
+			max: 5
+		})
 	}
 })

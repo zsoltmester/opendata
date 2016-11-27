@@ -3,8 +3,6 @@
 Szerver oldal elkészítése Node.js és Adonis.js segítségével. Nem kell a 2. beadandóban teszt, se a herokura nem kell feltölteni. Ettől függetlenül szeretném azt, hogy publikusan is elérhető legyen az alkalmazás.
 
 Implementálás:
-- Főoldal authorizáció nélkül, vendégeknek
-- Adatbázis az adathalmaz bejegyzéseknek, random adattal
 - Adatbázis a userekhez, random adattal
 - A autentikációhoz kapcsolódó oldalak és controllerek elkészítése
 - Az autentikáció és session bekötése
