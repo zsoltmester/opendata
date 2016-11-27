@@ -25,12 +25,9 @@ class UserController {
 
 		if (validation.fails()) {
 			yield request
-				.withOnly('username', 'password', 'email')
+				.withAll()
 				.andWith({
-					errors: validation.messages(),
-					username: userData.username,
-					password: userData.password,
-					email: userData.email
+					errors: validation.messages()
 				})
 				.flash()
 
@@ -50,13 +47,11 @@ class UserController {
 			response.redirect('/')
 		} catch (exception) {
 			yield request
-				.with({
+				.withAll()
+				.andWith({
 					errors: [{
 						message: "Failed to create user. Maybe the username or the email are not available.",
-					}],
-					username: userData.username,
-					password: userData.password,
-					email: userData.email
+					}]
 				})
 				.flash()
 
@@ -82,11 +77,9 @@ class UserController {
 
 		if (validation.fails()) {
 			yield request
-				.withOnly('username', 'password')
+				.withAll()
 				.andWith({
-					errors: validation.messages(),
-					username: userData.username,
-					password: userData.password
+					errors: validation.messages()
 				})
 				.flash()
 
@@ -106,12 +99,11 @@ class UserController {
 			response.redirect('/')
 		} catch (exception) {
 			yield request
-				.with({
+				.withOnly('username')
+				.andWith({
 					errors: [{
 						message: exception.message
-					}],
-					username: userData.username,
-					password: userData.password
+					}]
 				})
 				.flash()
 
