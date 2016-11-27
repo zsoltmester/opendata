@@ -33,46 +33,5 @@ module.exports = {
 			filename: Helpers.databasePath('development.sqlite')
 		},
 		useNullAsDefault: true
-	},
-
-	/*
-	|--------------------------------------------------------------------------
-	| MySQL
-	|--------------------------------------------------------------------------
-	|
-	| Here we define connection settings for MySQL database.
-	|
-	| npm i --save mysql
-	|
-	*/
-	mysql: {
-		client: 'mysql',
-		connection: {
-			host: Env.get('DB_HOST', 'localhost'),
-			user: Env.get('DB_USER', 'root'),
-			password: Env.get('DB_PASSWORD', ''),
-			database: Env.get('DB_DATABASE', 'adonis')
-		}
-	},
-
-	/*
-	|--------------------------------------------------------------------------
-	| PostgreSQL
-	|--------------------------------------------------------------------------
-	|
-	| Here we define connection settings for PostgreSQL database.
-	|
-	| npm i --save pg
-	|
-	*/
-	pg: {
-		client: 'pg',
-		connection: {
-			host: Env.get('DB_HOST', 'localhost'),
-			user: Env.get('DB_USER', 'root'),
-			password: Env.get('DB_PASSWORD', ''),
-			database: Env.get('DB_DATABASE', 'adonis')
-		}
 	}
-
 }
