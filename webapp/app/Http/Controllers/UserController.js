@@ -2,16 +2,17 @@
 
 const User = use('App/Model/User')
 const Validator = use('Validator')
+const Hash = use('Hash')
 
 class UserController {
 
 	*
-	create(request, response) {
+	showSignup(request, response) {
 		yield response.sendView('signUp');
 	}
 
 	*
-	store(request, response) {
+	signup(request, response) {
 		const userData = request.only('username', 'password', 'email')
 
 		const rules = {
@@ -50,7 +51,7 @@ class UserController {
 	}
 
 	*
-	credentials(request, response) {
+	showLogin(request, response) {
 		yield response.sendView('login');
 	}
 
@@ -96,6 +97,52 @@ class UserController {
 	logout(request, response) {
 		yield request.auth.logout()
 		response.redirect('/')
+	}
+
+	*
+	showProfile(request, response) {
+		yield response.sendView('profile');
+	}
+
+	*
+	modify(request, response) {
+		const userData = request.only('password', 'email')
+
+		const rules = {
+			password: 'required',
+			email: 'required'
+		}
+
+		const validation = yield Validator.validate(userData, rules)
+
+		if (validation.fails()) {
+			yield request
+				.withOnly('password', 'email')
+				.andWith({
+					errors: validation.messages()
+				})
+				.flash()
+
+			response.redirect('back')
+			return
+		}
+
+		request.currentUser.password = Hash.make(userData.password)
+		request.currentUser.email = userData.email
+
+		try {
+			yield request.currentUser.save()
+			response.redirect('back')
+		} catch (exception) {
+			yield request
+				.with({
+					errors: [{
+						message: "Failed to modify your datas. Maybe the email is not available."
+					}]
+				})
+				.flash()
+			response.redirect('back')
+		}
 	}
 
 	*

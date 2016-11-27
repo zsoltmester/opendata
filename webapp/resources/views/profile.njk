@@ -1,7 +1,7 @@
 {% extends 'base' %}
 
 {% block title %}
-	Sign Up
+	Profile
 {% endblock %}
 
 {% block content %}
@@ -16,13 +16,13 @@
 		</ul>
 	{% endif %}
 
-	{{ form.open({action: 'UserController.signup'}) }}
+	{{ form.open({action: 'UserController.modify'}) }}
 
 	{{ csrfField }}
 
 	<fieldset class="form-group">
 		{{ form.label('Username') }}
-		{{ form.text('username', null, {}) }}
+		{{ form.text('username', currentUser.username, { disabled:"disabled" }) }}
 	</fieldset>
 
 	<fieldset class="form-group">
@@ -32,10 +32,10 @@
 
 	<fieldset class="form-group">
 		{{ form.label('Email') }}
-		{{ form.email('email', null, {}) }}
+		{{ form.email('email', currentUser.email, {}) }}
 	</fieldset>
 
-	{{ form.submit('Sign Up', 'signup', {}) }}
+	{{ form.submit('Modify', 'modify', {}) }}
 
 	{{ form.close() }}
 {% endblock %}

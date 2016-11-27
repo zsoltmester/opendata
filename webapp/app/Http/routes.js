@@ -18,8 +18,11 @@
 const Route = use('Route')
 
 Route.get('/', 'DatasetController.index')
-Route.get('/signup', 'UserController.create')
-Route.post('/signup', 'UserController.store')
-Route.get('/login', 'UserController.credentials')
+
+Route.get('/signup', 'UserController.showSignup')
+Route.post('/signup', 'UserController.signup')
+Route.get('/login', 'UserController.showLogin')
 Route.post('/login', 'UserController.login')
 Route.get('/logout', 'UserController.logout')
+Route.get('/profile', 'UserController.showProfile')
+Route.post('/profile', 'UserController.modify')
