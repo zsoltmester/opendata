@@ -46,6 +46,7 @@ class UserController {
 					}]
 				})
 				.flash()
+
 			response.redirect('back')
 		}
 	}
@@ -89,6 +90,7 @@ class UserController {
 					}]
 				})
 				.flash()
+
 			response.redirect('back')
 		}
 	}
@@ -127,7 +129,7 @@ class UserController {
 			return
 		}
 
-		request.currentUser.password = Hash.make(userData.password)
+		request.currentUser.password = yield Hash.make(userData.password)
 		request.currentUser.email = userData.email
 
 		try {
@@ -137,18 +139,13 @@ class UserController {
 			yield request
 				.with({
 					errors: [{
-						message: "Failed to modify your datas. Maybe the email is not available."
+						message: "Failed to modify your data. Maybe the email is not available."
 					}]
 				})
 				.flash()
+
 			response.redirect('back')
 		}
-	}
-
-	*
-	check(request, response) {
-		const isLoggedIn = yield request.auth.check()
-		return isLoggedIn
 	}
 }
 
