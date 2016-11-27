@@ -13,18 +13,9 @@
 
 const Factory = use('Factory')
 
-/*
-|--------------------------------------------------------------------------
-| User Model Blueprint
-|--------------------------------------------------------------------------
-| Below is an example of blueprint for User Model. You can make use of
-| this blueprint inside your seeds to generate dummy data.
-|
-*/
-Factory.blueprint('App/Model/User', (fake) => {
+Factory.blueprint('App/Model/Dataset', (fake) => {
 	return {
-		username: fake.username(),
-		email: fake.email(),
-		password: fake.password()
+		summary: fake.sentence(),
+		description: fake.paragraph()
 	}
 })

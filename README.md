@@ -3,7 +3,6 @@
 Szerver oldal elkészítése Node.js és Adonis.js segítségével. Nem kell a 2. beadandóban teszt, se a herokura nem kell feltölteni. Ettől függetlenül szeretném azt, hogy publikusan is elérhető legyen az alkalmazás.
 
 Implementálás:
-- Fejléc
 - Főoldal authorizáció nélkül, vendégeknek
 - Adatbázis az adathalmaz bejegyzéseknek, random adattal
 - Adatbázis a userekhez, random adattal
@@ -16,6 +15,7 @@ Implementálás:
 
 - http://webprogramozas.inf.elte.hu/alkfejl.php
 - http://www.adonisjs.com/docs/3.1
+- http://knexjs.org/#Schema-Building
 
 # Open Data Hub
 

@@ -5,7 +5,18 @@
 {% endblock %}
 
 {% block content %}
-	<p>
-		wtf
-	</p>
+	{% for dataset in datasets %}
+		<p>
+			summary:
+			{{ dataset.summary }}
+			<br/>
+			description:
+			{{ dataset.description }}
+			<br/>
+		</p>
+	{% else %}
+		<p>
+			No datasets found :(
+		</p>
+	{% endfor %}
 {% endblock %}

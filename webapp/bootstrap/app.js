@@ -87,7 +87,6 @@ const aliases = {
 |
 */
 const commands = [
-	'App/Commands/Greet',
 	'Adonis/Commands/Auth:Setup',
 	'Adonis/Commands/Repl',
 	'Adonis/Commands/Make:Controller',

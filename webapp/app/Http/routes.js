@@ -17,4 +17,4 @@
 
 const Route = use('Route')
 
-Route.on('/').render('main')
+Route.get('/', 'DatasetController.index')
