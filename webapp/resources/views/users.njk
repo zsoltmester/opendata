@@ -1,0 +1,30 @@
+{% extends 'base' %}
+
+{% block title %}
+	Manage Users
+{% endblock %}
+
+{% block content %}
+	{{ form.open({action: 'UserController.delete'}) }}
+
+	{{ csrfField }}
+
+	{% for user in users %}
+		<fieldset class="form-group">
+			<strong>username:</strong>
+			{{ form.label(user.username) }}
+			<strong>email:</strong>
+			{{ form.label(user.email) }}
+			<strong>delete:</strong>
+			{{ form.checkbox(user.id, null, {}) }}
+		</fieldset>
+	{% else %}
+		<p>
+			No datasets found :(
+		</p>
+	{% endfor %}
+
+	{{ form.submit('Delete', 'delete', {}) }}
+
+	{{ form.close() }}
+{% endblock %}

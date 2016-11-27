@@ -188,6 +188,18 @@ class UserController {
 
 		response.redirect('back')
 	}
+
+	*
+	showUsers(request, response) {
+		const users = yield User.all()
+		yield response.sendView('users', { users: users.toJSON() });
+	}
+
+	*
+	delete(request, response) {
+		// TODO
+	}
+
 }
 
 module.exports = UserController

@@ -10,6 +10,10 @@
 		<p>
 			There is the header: app logo and the buttons...
 			{% if currentUser %}
+				{% if currentUser.isAdmin %}
+					&nbsp;
+					<a href="users">users</a>
+				{% endif %}
 				&nbsp;
 				<a href="profile">{{ currentUser.username }}</a>
 				&nbsp;
