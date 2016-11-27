@@ -22,6 +22,26 @@
 			{% endif %}
 		</p>
 
+		{% if old('errors') %}
+			<ul>
+				{% for error in old('errors') %}
+					<li style="color: red">
+						{{ error.message }}
+					</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+
+		{% if old('infos') %}
+			<ul>
+				{% for info in old('infos') %}
+					<li style="color: green">
+						{{ info.message }}
+					</li>
+				{% endfor %}
+			</ul>
+		{% endif %}
+
 		{% block content %}{% endblock %}
 	</body>
 </html>

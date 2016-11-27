@@ -5,17 +5,6 @@
 {% endblock %}
 
 {% block content %}
-
-	{% if old('errors') %}
-		<ul>
-			{% for error in old('errors') %}
-				<li>
-					{{ error.message }}
-				</li>
-			{% endfor %}
-		</ul>
-	{% endif %}
-
 	{{ form.open({action: 'UserController.login'}) }}
 
 	{{ csrfField }}

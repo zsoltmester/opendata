@@ -40,6 +40,13 @@ class UserController {
 
 		try {
 			yield User.create(userData)
+			yield request
+				.with({
+					infos: [{
+						message: "Signed up successfully."
+					}]
+				})
+				.flash()
 			response.redirect('/')
 		} catch (exception) {
 			yield request
@@ -89,6 +96,13 @@ class UserController {
 
 		try {
 			yield request.auth.attempt(userData.username, userData.password)
+			yield request
+				.with({
+					infos: [{
+						message: "Logged in successfully."
+					}]
+				})
+				.flash()
 			response.redirect('/')
 		} catch (exception) {
 			yield request
@@ -108,6 +122,13 @@ class UserController {
 	*
 	logout(request, response) {
 		yield request.auth.logout()
+		yield request
+			.with({
+				infos: [{
+					message: "Logged out successfully."
+				}]
+			})
+			.flash()
 		response.redirect('/')
 	}
 
