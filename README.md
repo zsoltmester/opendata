@@ -13,7 +13,8 @@ Implementálás:
 
 - http://webprogramozas.inf.elte.hu/alkfejl.php
 - http://www.adonisjs.com/docs/3.1
-- http://knexjs.org/#Schema-Building
+- http://knexjs.org/
+- http://chancejs.com/
 
 # Open Data Hub
 
