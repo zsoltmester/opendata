@@ -1,0 +1,36 @@
+{% extends 'base' %}
+
+{% block title %}
+	Login
+{% endblock %}
+
+{% block content %}
+
+	{% if old('errors') %}
+		<ul>
+			{% for error in old('errors') %}
+				<li>
+					{{ error.message }}
+				</li>
+			{% endfor %}
+		</ul>
+	{% endif %}
+
+	{{ form.open({action: 'UserController.login'}) }}
+
+	{{ csrfField }}
+
+	<fieldset class="form-group">
+		{{ form.label('Username') }}
+		{{ form.text('username', null, {}) }}
+	</fieldset>
+
+	<fieldset class="form-group">
+		{{ form.label('Password') }}
+		{{ form.password('password', null, {}) }}
+	</fieldset>
+
+	{{ form.submit('Login', 'login', {}) }}
+
+	{{ form.close() }}
+{% endblock %}

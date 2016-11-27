@@ -31,35 +31,53 @@ class UserController {
 				.flash()
 
 			response.redirect('back')
-		} else {
-			yield User.create(userData)
-			response.redirect('/')
+			return
 		}
+
+		yield User.create(userData)
+		response.redirect('/')
+	}
+
+	*
+	credentials(request, response) {
+		yield response.sendView('login');
 	}
 
 	*
 	login(request, response) {
-		const username = request.input('username')
-		const password = request.input('password')
-		var login
-		try {
-			login = yield request.auth.attempt(username, password)
-		} catch (exception) {
-			yield response.with({
-				error: exception.message
-			}).flash()
+		const userData = request.only('username', 'password')
+
+		const rules = {
+			username: 'required',
+			password: 'required'
 		}
-		if (login) {
-			response.send('Logged in successfully')
-		} else {
-			response.unauthorized('Invalid credentails')
+
+		const validation = yield Validator.validate(userData, rules)
+
+		if (validation.fails()) {
+			yield request
+				.withOnly('username', 'password')
+				.andWith({
+					errors: validation.messages()
+				})
+				.flash()
+
+			response.redirect('back')
+			return
+		}
+
+		try {
+			yield request.auth.attempt(userData.username, userData.password)
+			response.redirect('/')
+		} catch (exception) {
+			response.redirect('back')
 		}
 	}
 
 	*
 	logout(request, response) {
 		yield request.auth.logout()
-		response.send('Logged out successfully')
+		response.redirect('/')
 	}
 
 	*

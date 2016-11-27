@@ -2,11 +2,25 @@
 <html>
 	<head>
 		<meta charset="utf-8">
-		<title>{% block title %}{% endblock %}</title>
+		<title>
+			{% block title %}{% endblock %}
+		</title>
 	</head>
 	<body>
 		<p>
 			There is the header: app logo and the buttons...
+			{% if currentUser %}
+				<a href="logout">
+					logout
+				</a>
+			{% else %}
+				<a href="login">
+					login
+				</a>
+				<a href="signup">
+					signup
+				</a>
+			{% endif %}
 		</p>
 
 		{% block content %}{% endblock %}
