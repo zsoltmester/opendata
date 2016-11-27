@@ -139,7 +139,11 @@ class UserController {
 
 	*
 	modify(request, response) {
-		const userData = request.only('username', 'password', 'email')
+		const userData = request.only('password', 'email')
+		userData.email = userData.email.trim()
+
+		var infos = []
+		var errors = []
 
 		const passwordRules = {
 			password: 'required'
@@ -149,21 +153,13 @@ class UserController {
 			request.currentUser.password = yield Hash.make(userData.password)
 			try {
 				yield request.currentUser.save()
-				yield request
-					.with({
-						infos: [{
-							message: "Your password modified successfully."
-						}]
-					})
-					.flash()
+				infos.push({
+					message: "Your password modified successfully."
+				})
 			} catch (exception) {
-				yield request
-					.with({
-						errors: [{
-							message: "Failed to modify your password."
-						}]
-					})
-					.flash()
+				errors.push({
+					message: "Failed to modify your password."
+				})
 			}
 		}
 
@@ -175,23 +171,28 @@ class UserController {
 			request.currentUser.email = userData.email
 			try {
 				yield request.currentUser.save()
-				yield request
-					.with({
-						infos: [{
-							message: "Your email modified successfully."
-						}]
-					})
-					.flash()
+				infos.push({
+					message: "Your email modified successfully."
+				})
 			} catch (exception) {
-				yield request
-					.with({
-						errors: [{
-							message: "Failed to modify your email."
-						}]
-					})
-					.flash()
+				errors.push({
+					message: "Failed to modify your email."
+				})
+			}
+		} else if (userData.email && userData.email.length > 0) {
+			for (var error in emailValidation.messages()) {
+				errors.push({
+					message: emailValidation.messages()[error].message
+				})
 			}
 		}
+
+		yield request
+			.with({
+				infos: infos,
+				errors: errors
+			})
+			.flash()
 
 		response.redirect('back')
 	}
