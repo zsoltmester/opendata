@@ -34,8 +34,19 @@ class UserController {
 			return
 		}
 
-		yield User.create(userData)
-		response.redirect('/')
+		try {
+			yield User.create(userData)
+			response.redirect('/')
+		} catch (exception) {
+			yield request
+				.with({
+					errors: [{
+						message: "Failed to create user. Maybe the username or the email are not available."
+					}]
+				})
+				.flash()
+			response.redirect('back')
+		}
 	}
 
 	*
@@ -70,6 +81,13 @@ class UserController {
 			yield request.auth.attempt(userData.username, userData.password)
 			response.redirect('/')
 		} catch (exception) {
+			yield request
+				.with({
+					errors: [{
+						message: exception.message
+					}]
+				})
+				.flash()
 			response.redirect('back')
 		}
 	}
