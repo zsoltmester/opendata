@@ -10,17 +10,21 @@
 	{{ csrfField }}
 
 	{% for user in users %}
-		<fieldset class="form-group">
+		<fieldset>
 			<strong>username:</strong>
 			{{ form.label(user.username) }}
 			<strong>email:</strong>
 			{{ form.label(user.email) }}
-			<strong>delete:</strong>
-			{{ form.checkbox(user.id, null, {}) }}
+			{% if user.isAdmin %}
+				<strong>admin</strong>
+			{% else %}
+				<strong>delete:</strong>
+				{{ form.checkbox(user.id, null, false) }}
+			{% endif %}
 		</fieldset>
 	{% else %}
 		<p>
-			No datasets found :(
+			No users found :(
 		</p>
 	{% endfor %}
 

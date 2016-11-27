@@ -8,7 +8,7 @@ class UserController {
 
 	*
 	showSignup(request, response) {
-		yield response.sendView('signUp');
+		yield response.sendView('sign_up');
 	}
 
 	*
@@ -192,12 +192,42 @@ class UserController {
 	*
 	showUsers(request, response) {
 		const users = yield User.all()
-		yield response.sendView('users', { users: users.toJSON() });
+		yield response.sendView('users', {
+			users: users.toJSON()
+		});
 	}
 
 	*
 	delete(request, response) {
-		// TODO
+		const users = yield User.all()
+
+		var infos = []
+		var errors = []
+
+		for (var user of users) {
+			if (!request.input(user.id)) {
+				continue
+			}
+			try {
+				yield user.delete()
+				infos.push({
+					message: user.username + " deleted."
+				})
+			} catch (exception) {
+				errors.push({
+					message: "Failed to delete:" + user.username
+				})
+			}
+		}
+
+		yield request
+			.with({
+				infos: infos,
+				errors: errors
+			})
+			.flash()
+
+		response.redirect('back')
 	}
 
 }
