@@ -28,4 +28,6 @@ Route.get('/users', 'UserController.showUsers')
 Route.post('/users', 'UserController.delete')
 
 Route.get('/', 'DatasetController.index')
-Route.get('/:id', 'DatasetController.show')
+Route.get('/dataset/:id', 'DatasetController.show')
+Route.get('/add', 'DatasetController.showCreate')
+Route.post('/add', 'DatasetController.create')

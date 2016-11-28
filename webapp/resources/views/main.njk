@@ -7,7 +7,7 @@
 {% block content %}
 	{% for dataset in datasets %}
 		<p>
-			<a href={{dataset.id}}>{{ dataset.summary }}</a>
+			<a href={{ "dataset/" + dataset.id}}>{{ dataset.summary }}</a>
 		</p>
 	{% else %}
 		<p>

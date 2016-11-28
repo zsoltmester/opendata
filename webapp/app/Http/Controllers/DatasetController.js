@@ -12,13 +12,22 @@ class DatasetController {
 		})
 	}
 
-
 	*
 	show(request, response) {
 		const dataset = yield Dataset.find(request.param('id'))
 		yield response.sendView('details', {
 			dataset: dataset.toJSON()
 		})
+	}
+
+	*
+	showCreate(request, response) {
+		yield response.sendView('create');
+	}
+
+	*
+	create(request, response) {
+		// TODO
 	}
 }
 
