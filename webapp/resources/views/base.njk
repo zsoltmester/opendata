@@ -11,20 +11,20 @@
 			There is the header: app logo and the buttons...
 			{% if currentUser %}
 				&nbsp;
-				<a href="add">add</a>
+				<a href="/add">add</a>
 				{% if currentUser.isAdmin %}
 					&nbsp;
-					<a href="users">users</a>
+					<a href="/users">users</a>
 				{% endif %}
 				&nbsp;
-				<a href="profile">{{ currentUser.username }}</a>
+				<a href="/profile">{{ currentUser.username }}</a>
 				&nbsp;
-				<a href="logout">logout</a>
+				<a href="/logout">logout</a>
 			{% else %}
 				&nbsp;
-				<a href="login">login</a>
+				<a href="/login">login</a>
 				&nbsp;
-				<a href="signup">signup</a>
+				<a href="/signup">signup</a>
 			{% endif %}
 		</p>
 
