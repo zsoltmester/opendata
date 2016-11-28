@@ -25,7 +25,7 @@ class UserController {
 
 		if (validation.fails()) {
 			yield request
-				.withAll()
+				.withOnly('username', 'email')
 				.andWith({
 					errors: validation.messages()
 				})
@@ -47,7 +47,7 @@ class UserController {
 			response.redirect('/')
 		} catch (exception) {
 			yield request
-				.withAll()
+				.withOnly('username', 'email')
 				.andWith({
 					errors: [{
 						message: "Failed to create user. Maybe the username or the email are not available.",
@@ -77,7 +77,7 @@ class UserController {
 
 		if (validation.fails()) {
 			yield request
-				.withAll()
+				.withOnly('username')
 				.andWith({
 					errors: validation.messages()
 				})
