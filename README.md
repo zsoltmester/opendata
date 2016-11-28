@@ -3,7 +3,6 @@
 Szerver oldal elkészítése Node.js és Adonis.js segítségével. Nem kell a 2. beadandóban teszt, se a herokura nem kell feltölteni. Ettől függetlenül szeretném azt, hogy publikusan is elérhető legyen az alkalmazás.
 
 Implementálás:
-- a főoldalon csak a dataset címe és a description eleje látszon. a cím a detailsre visz
 - implementálni a dataset detailst
 - implementálni a dataset módosítást
 - implementálni a dataset törlést
