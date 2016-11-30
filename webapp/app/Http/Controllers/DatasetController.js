@@ -53,6 +53,7 @@ class DatasetController {
 		}
 
 		try {
+			datasetData.user_id = request.currentUser.id
 			yield Dataset.create(datasetData)
 			yield request
 				.with({

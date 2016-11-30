@@ -15,6 +15,7 @@ const Factory = use('Factory')
 
 Factory.blueprint('App/Model/Dataset', (fake) => {
 	return {
+		user_id: 1,
 		summary: fake.sentence(),
 		description: fake.paragraph(),
 		format: fake.word(),

@@ -7,6 +7,7 @@ class DatasetsTableSchema extends Schema {
 	up() {
 		this.create('datasets', (table) => {
 			table.increments()
+			table.integer('user_id').unsigned().references('id').inTable('users')
 			table.string('summary')
 			table.text('description')
 			table.string('format')
