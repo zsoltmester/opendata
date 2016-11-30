@@ -29,4 +29,8 @@
 	<strong>updated_at:</strong>
 	{{ dataset.updated_at }}
 	<br/>
+	<strong>user_id:</strong>
+	{{ dataset.user_id }}
+	<br/>
+	<a href={{ "/dataset/" + dataset.id + "/modify"}}>modify</a>
 {% endblock %}

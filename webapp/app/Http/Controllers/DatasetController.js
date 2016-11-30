@@ -23,7 +23,7 @@ class DatasetController {
 
 	*
 	showCreate(request, response) {
-		yield response.sendView('create');
+		yield response.sendView('create')
 	}
 
 	*
@@ -75,6 +75,66 @@ class DatasetController {
 
 			response.redirect('back')
 		}
+	}
+
+	*
+	showModify(request, response) {
+		const dataset = yield Dataset.find(request.param('id'))
+		yield response.sendView('modify', {
+			dataset: dataset.toJSON()
+		})
+	}
+
+	*
+	modify(request, response) {
+		// TODO
+		/*const datasetData = request.only('summary', 'description', 'format', 'link', 'access')
+
+		const rules = {
+			summary: 'required|unique:datasets',
+			description: 'required',
+			format: 'required',
+			link: 'required',
+			access: 'required'
+		}
+
+		const validation = yield Validator.validate(datasetData, rules)
+
+		if (validation.fails()) {
+			yield request
+				.withAll()
+				.andWith({
+					errors: validation.messages()
+				})
+				.flash()
+
+			response.redirect('back')
+			return
+		}
+
+		try {
+			datasetData.user_id = request.currentUser.id
+			yield Dataset.create(datasetData)
+			yield request
+				.with({
+					infos: [{
+						message: "Dataset added successfully."
+					}]
+				})
+				.flash()
+			response.redirect('/')
+		} catch (exception) {
+			yield request
+				.withAll()
+				.andWith({
+					errors: [{
+						message: "Failed to add the dataset.",
+					}]
+				})
+				.flash()
+
+			response.redirect('back')
+		}*/
 	}
 }
 
