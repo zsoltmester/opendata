@@ -108,6 +108,33 @@ class DatasetController {
 
 		response.redirect('back')
 	}
+
+	*
+	delete(request, response) {
+		const dataset = yield Dataset.find(request.param('id'))
+
+		try {
+			yield dataset.delete()
+			yield request
+				.with({
+					infos: [{
+						message: "Dataset deleted successfully."
+					}]
+				})
+				.flash()
+			response.redirect('/')
+		} catch (exception) {
+			yield request
+				.with({
+					errors: [{
+						message: "Failed to delete the dataset.",
+					}]
+				})
+				.flash()
+
+			response.redirect('back')
+		}
+	}
 }
 
 function* doModification(property, current, modified, infos, errors) {

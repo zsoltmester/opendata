@@ -34,5 +34,6 @@
 	<br/>
 	{% if currentUser.isAdmin or currentUser.id == dataset.user_id %}
 		<a href={{ "/dataset/" + dataset.id + "/modify"}}>modify</a>
+		<a href={{ "/dataset/" + dataset.id + "/delete"}}>delete</a>
 	{% endif %}
 {% endblock %}
