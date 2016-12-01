@@ -132,7 +132,6 @@ class UserController {
 	*
 	modify(request, response) {
 		const userData = request.only('password', 'email')
-		userData.email = userData.email.trim()
 
 		var infos = []
 		var errors = []

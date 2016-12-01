@@ -87,54 +87,48 @@ class DatasetController {
 
 	*
 	modify(request, response) {
-		// TODO
-		/*const datasetData = request.only('summary', 'description', 'format', 'link', 'access')
+		const dataset = yield Dataset.find(request.param('id'))
+		const modifiedDataset = request.only('summary', 'description', 'format', 'link', 'access')
 
-		const rules = {
-			summary: 'required|unique:datasets',
-			description: 'required',
-			format: 'required',
-			link: 'required',
-			access: 'required'
-		}
+		var infos = []
+		var errors = []
 
-		const validation = yield Validator.validate(datasetData, rules)
+		yield doModification('summary', dataset, modifiedDataset, infos, errors)
+		yield doModification('description', dataset, modifiedDataset, infos, errors)
+		yield doModification('format', dataset, modifiedDataset, infos, errors)
+		yield doModification('link', dataset, modifiedDataset, infos, errors)
+		yield doModification('access', dataset, modifiedDataset, infos, errors)
 
-		if (validation.fails()) {
-			yield request
-				.withAll()
-				.andWith({
-					errors: validation.messages()
-				})
-				.flash()
+		yield request
+			.with({
+				infos: infos,
+				errors: errors
+			})
+			.flash()
 
-			response.redirect('back')
-			return
-		}
+		response.redirect('back')
+	}
+}
 
-		try {
-			datasetData.user_id = request.currentUser.id
-			yield Dataset.create(datasetData)
-			yield request
-				.with({
-					infos: [{
-						message: "Dataset added successfully."
-					}]
-				})
-				.flash()
-			response.redirect('/')
-		} catch (exception) {
-			yield request
-				.withAll()
-				.andWith({
-					errors: [{
-						message: "Failed to add the dataset.",
-					}]
-				})
-				.flash()
+function* doModification(property, current, modified, infos, errors) {
+	var rules = {}
+	rules[property] = 'required'
+	const validation = yield Validator.validate(modified, rules)
+	if (validation.fails() || current[property] == modified[property]) {
+		return
+	}
 
-			response.redirect('back')
-		}*/
+	const oldValue = current[property]
+	current[property] = modified[property]
+	try {
+		yield current.save()
+		infos.push({
+			message: property + " modified successfully."
+		})
+	} catch (exception) {
+		errors.push({
+			message: "Failed to modify " + property + ". Maybe the " + property + " already exists."
+		})
 	}
 }
 
