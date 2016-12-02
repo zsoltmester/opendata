@@ -3,10 +3,10 @@
 Szerver oldal elkészítése Node.js és Adonis.js segítségével. Nem kell a 2. beadandóban teszt, se a herokura nem kell feltölteni. Ettől függetlenül szeretném azt, hogy publikusan is elérhető legyen az alkalmazás.
 
 Implementálás:
-- review adatbázis, mintaadatokkal
 - review megjelenítése
 - review hozzáadása
 - review törlése
+- rendes kezdőadatokkal feltölteni a db-t
 - code style improvements
 - dokumentáció frissítése
 - tagelni a mostani a developot

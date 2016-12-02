@@ -8,6 +8,10 @@ class Dataset extends Lucid {
 		return this.belongsTo('App/Model/User')
 	}
 
+	reviews() {
+		return this.hasMany('App/Model/Review')
+	}
+
 }
 
 module.exports = Dataset

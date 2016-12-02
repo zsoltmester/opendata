@@ -27,3 +27,15 @@ Factory.blueprint('App/Model/Dataset', (fake) => {
 		})
 	}
 })
+
+Factory.blueprint('App/Model/Review', (fake) => {
+	return {
+		user_id: 1,
+		dataset_id: 1,
+		comment: fake.paragraph(),
+		rate: fake.integer({
+			min: 0,
+			max: 5
+		})
+	}
+})
