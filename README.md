@@ -3,17 +3,13 @@
 Szerver oldal elkészítése Node.js és Adonis.js segítségével. Nem kell a 2. beadandóban teszt, se a herokura nem kell feltölteni. Ettől függetlenül szeretném azt, hogy publikusan is elérhető legyen az alkalmazás.
 
 Implementálás:
-- Review adatbázis, mintaadatokkal
-- Review megjelenítése
-- Review hozzáadása
-- Review törlése
-
-## Kérdések
-
-- authentikáció?
-- miért kell a yield, hogy megvárja a befejezést?
-- a dokumentáció kövesse a változást?
-- felugró ablakot meg hogy?
+- auth middleware
+- review adatbázis, mintaadatokkal
+- review megjelenítése
+- review hozzáadása
+- review törlése
+- dokumentáció frissítése
+- code style improvements
 
 # Technical reference
 
