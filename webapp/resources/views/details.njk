@@ -36,4 +36,29 @@
 		<a href={{ "/dataset/" + dataset.id + "/modify"}}>modify</a>
 		<a href={{ "/dataset/" + dataset.id + "/delete"}}>delete</a>
 	{% endif %}
+	{% if reviews %}
+		Reviews:
+		{% for review in reviews %}
+			<p>
+				<strong>user_id:</strong>
+				{{ review.user_id }}
+				<br/>
+				<strong>dataset_id:</strong>
+				{{ review.dataset_id }}
+				<br/>
+				<strong>rate:</strong>
+				{{ review.rate }}
+				<br/>
+				<strong>comment:</strong>
+				{{ review.comment }}
+				<br/>
+				<strong>created_at:</strong>
+				{{ review.created_at }}
+				<br/>
+				<strong>updated_at:</strong>
+				{{ review.updated_at }}
+				<br/>
+			</p>
+		{% endfor %}
+	{% endif %}
 {% endblock %}

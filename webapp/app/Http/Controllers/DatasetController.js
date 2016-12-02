@@ -1,6 +1,7 @@
 'use strict'
 
 const Dataset = use('App/Model/Dataset')
+const Review = use('App/Model/Review')
 const Validator = use('Validator')
 
 class DatasetController {
@@ -16,9 +17,16 @@ class DatasetController {
 	*
 	show(request, response) {
 		const dataset = yield Dataset.find(request.param('id'))
-		yield response.sendView('details', {
-			dataset: dataset.toJSON()
-		})
+
+		var data = {}
+		data.dataset = dataset.toJSON()
+
+		var reviews = yield Review.query().where('dataset_id', dataset.id).fetch()
+		if (reviews && reviews.toJSON().length > 0) {
+			data.reviews = reviews.toJSON()
+		}
+
+		yield response.sendView('details', data)
 	}
 
 	*
