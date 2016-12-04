@@ -166,24 +166,34 @@ class DatasetController {
 			return
 		}
 
+		var oldReview
 		try {
-			input.user_id = request.currentUser.id
-			input.dataset_id = request.param('id')
-			yield Review.create(input)
+			oldReview = yield Review.query().where('dataset_id', request.param('id')).where('user_id', request.currentUser.id).first()
+
+			if (oldReview) {
+				oldReview.rate = input.rate
+				oldReview.comment = input.comment
+				yield oldReview.save()
+			} else {
+				input.user_id = request.currentUser.id
+				input.dataset_id = request.param('id')
+				yield Review.create(input)
+			}
 			yield request
 				.with({
 					infos: [{
-						message: "Review added successfully."
+						message: "Review " + (oldReview ? "modified" : "added") + " successfully."
 					}]
 				})
 				.flash()
 			response.redirect('back')
 		} catch (exception) {
+			console.log(exception)
 			yield request
 				.withAll()
 				.andWith({
 					errors: [{
-						message: "Failed to add review.",
+						message: "Failed to " + (oldReview ? "modify" : "add") + " the review."
 					}]
 				})
 				.flash()
