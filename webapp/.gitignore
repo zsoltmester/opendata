@@ -13,6 +13,9 @@ storage/*
 # When npm runs error it write logs to the below file
 npm-debug.log
 
+# Development SQLite database
+database/development.sqlite
+
 # Coverage directory used by tools like istanbul
 coverage
 

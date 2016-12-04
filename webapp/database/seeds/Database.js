@@ -18,8 +18,8 @@ class DatabaseSeeder {
 
 	*
 	run() {
-		yield Factory.model('App/Model/Dataset').create(5)
-		yield Factory.model('App/Model/Review').create(3)
+		//yield Factory.model('App/Model/Dataset').create(5)
+		//yield Factory.model('App/Model/Review').create(3)
 	}
 
 }

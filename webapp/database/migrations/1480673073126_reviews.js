@@ -9,8 +9,8 @@ class ReviewsTableSchema extends Schema {
 			table.increments()
 			table.integer('user_id').unsigned().references('id').inTable('users')
 			table.integer('dataset_id').unsigned().references('id').inTable('datasets')
-			table.text('comment')
 			table.float('rate')
+			table.text('comment')
 			table.timestamps()
 		})
 	}
