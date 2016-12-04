@@ -9,8 +9,9 @@ class AdminSeeder {
 	*
 	run() {
 		const admin = {
-			username: Env.get('ADMIN_USERNAME')
-			password: Env.get('ADMIN_PASSWORD')
+			username: Env.get('ADMIN_USERNAME'),
+			password: Env.get('ADMIN_PASSWORD'),
+			email: Env.get('ADMIN_EMAIL'),
 			isAdmin: true
 		}
 

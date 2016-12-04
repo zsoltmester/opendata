@@ -8,7 +8,6 @@ Implementálás:
 	- review előtörltése
 	- password-ot 2x bekérni
 	- a rate automatikusan frisssüljön
-- rendes kezdőadatokkal feltölteni a db-t
 - dokumentáció frissítése
 - tagelni a mostani a developot
 - visszarebaseelni a developra és törölni a server branchet
