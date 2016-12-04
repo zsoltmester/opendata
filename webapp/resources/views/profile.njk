@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-	{{ form.open({action: 'UserController.modify'}) }}
+	{{ form.open({ route: 'modifyProfile' }) }}
 
 	{{ csrfField }}
 
@@ -16,15 +16,15 @@
 
 	<fieldset>
 		{{ form.label('Password') }}
-		{{ form.password('password', null, {}) }}
+		{{ form.password('password') }}
 	</fieldset>
 
 	<fieldset>
 		{{ form.label('Email') }}
-		{{ form.email('email', currentUser.email, {}) }}
+		{{ form.email('email', currentUser.email) }}
 	</fieldset>
 
-	{{ form.submit('Modify', 'modify', {}) }}
+	{{ form.submit('Modify') }}
 
 	{{ form.close() }}
 {% endblock %}

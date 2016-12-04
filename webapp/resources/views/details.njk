@@ -11,14 +11,14 @@
 	<strong>description:</strong>
 	{{ dataset.description }}
 	<br/>
+	<strong>access:</strong>
+	{{ dataset.access }}
+	<br/>
 	<strong>format:</strong>
 	{{ dataset.format }}
 	<br/>
 	<strong>link:</strong>
 	{{ dataset.link }}
-	<br/>
-	<strong>access:</strong>
-	{{ dataset.access }}
 	<br/>
 	<strong>rate:</strong>
 	{{ dataset.rate }}
@@ -33,16 +33,18 @@
 	{{ dataset.user_id }}
 	<br/>
 	{% if currentUser.isAdmin or currentUser.id == dataset.user_id %}
-		<a href={{ "/dataset/" + dataset.id + "/modify"}}>modify</a>
-		<a href={{ "/dataset/" + dataset.id + "/delete"}}>delete</a>
+		{{ linkTo('modify', 'Modify', {id: dataset.id}) }}
+		&nbsp;
+		{{ linkTo('delete', 'Delete', {id: dataset.id}) }}
 	{% endif %}
 	{% if currentUser %}
 		<p>
-			{{ form.open({action: 'DatasetController.addReview', params: {id: dataset.id} }) }}
+			{{ form.open({ route: 'review', params: {id: dataset.id} }) }}
 
 			{{ csrfField }}
 
 			<fieldset>
+				{{ form.label('Rate') }}
 				{{ form.selectRange('rate', 1, 6) }}
 			</fieldset>
 
@@ -81,7 +83,7 @@
 				{{ review.updated_at }}
 				<br/>
 				{% if currentUser.isAdmin or currentUser.id == review.user_id %}
-					<a href={{ "/dataset/" + dataset.id + "/review/" + review.id + "/delete"}}>delete</a>
+					{{ linkTo('deleteReview', 'Delete', {id: dataset.id, review_id: review.id}) }}
 				{% endif %}
 			</p>
 		{% endfor %}

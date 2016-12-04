@@ -19,7 +19,7 @@ Route.group('manage', function() {
 
 // public dataset pages
 Route.get('/', 'DatasetController.index').as('main')
-Route.get('/dataset/:id', 'DatasetController.show').as('show')
+Route.get('/dataset/:id/show', 'DatasetController.show').as('show')
 
 // auth dataset pages
 Route.group('dataset', function() {
@@ -29,5 +29,5 @@ Route.group('dataset', function() {
 	Route.post('/:id/modify', 'DatasetController.modify').as('doModify').middleware('perm')
 	Route.get('/:id/delete', 'DatasetController.delete').as('delete').middleware('perm')
 	Route.post('/:id/review/add', 'DatasetController.addReview').as('review').middleware('perm')
-	Route.get('/:id/review/:review/delete', 'DatasetController.deleteReview').as('deleteReview').middleware('perm')
+	Route.get('/:id/review/:review_id/delete', 'DatasetController.deleteReview').as('deleteReview').middleware('perm')
 }).prefix('/dataset').middleware('auth')

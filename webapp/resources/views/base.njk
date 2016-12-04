@@ -9,23 +9,23 @@
 	<body>
 		<p>
 			There is the header: app logo and the buttons...
-			<a href="/">home</a>
+			{{ linkTo('main', 'Home') }}
 			{% if currentUser %}
 				&nbsp;
-				<a href="/dataset/add">add</a>
+				{{ linkTo('add', 'Add') }}
 				{% if currentUser.isAdmin %}
 					&nbsp;
-					{{ linkTo('users', 'users')}}
+					{{ linkTo('users', 'Users')}}
 				{% endif %}
 				&nbsp;
-				{{ linkTo('profile', currentUser.username)}}
+				{{ linkTo('profile', currentUser.username) }}
 				&nbsp;
-				{{ linkTo('logout', 'logout') }}
+				{{ linkTo('logout', 'Logout') }}
 			{% else %}
 				&nbsp;
-				{{ linkTo('login', 'login')}}
+				{{ linkTo('login', 'Login') }}
 				&nbsp;
-				{{ linkTo('signup', 'signup')}}
+				{{ linkTo('signup', 'Signup') }}
 			{% endif %}
 		</p>
 

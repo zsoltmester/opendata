@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-	{{ form.open({action: 'UserController.delete'}) }}
+	{{ form.open({ route: 'deleteUsers' }) }}
 
 	{{ csrfField }}
 
@@ -28,7 +28,7 @@
 		</p>
 	{% endfor %}
 
-	{{ form.submit('Delete', 'delete', {}) }}
+	{{ form.submit('Delete') }}
 
 	{{ form.close() }}
 {% endblock %}
