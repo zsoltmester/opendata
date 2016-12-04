@@ -20,6 +20,11 @@
 	</fieldset>
 
 	<fieldset>
+		{{ form.label('Access') }}
+		{{ form.textarea('access', dataset.access) }}
+	</fieldset>
+
+	<fieldset>
 		{{ form.label('Format') }}
 		{{ form.text('format', dataset.format) }}
 	</fieldset>
@@ -27,11 +32,6 @@
 	<fieldset>
 		{{ form.label('Link') }}
 		{{ form.text('link', dataset.link) }}
-	</fieldset>
-
-	<fieldset>
-		{{ form.label('Access') }}
-		{{ form.textarea('access', dataset.access) }}
 	</fieldset>
 
 	{{ form.submit('Modify') }}

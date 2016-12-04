@@ -8,6 +8,7 @@ Implementálás:
 	- profil módosítánál a jelenlegi jelszó bekérése
 	- review előtörltése
 	- password-ot 2x bekérni
+	- a rate automatikusan frisssüljön
 - rendes kezdőadatokkal feltölteni a db-t
 - dokumentáció frissítése
 - tagelni a mostani a developot

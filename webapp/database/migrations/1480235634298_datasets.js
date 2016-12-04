@@ -8,11 +8,11 @@ class DatasetsTableSchema extends Schema {
 		this.create('datasets', (table) => {
 			table.increments()
 			table.integer('user_id').unsigned().references('id').inTable('users')
-			table.string('summary').notNullable().unique()
+			table.string('summary').notNullable()
 			table.text('description')
+			table.text('access')
 			table.string('format')
 			table.string('link')
-			table.text('access')
 			table.float('rate')
 			table.timestamps()
 		})
