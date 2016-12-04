@@ -80,6 +80,9 @@
 				<strong>updated_at:</strong>
 				{{ review.updated_at }}
 				<br/>
+				{% if currentUser.isAdmin or currentUser.id == review.user_id %}
+					<a href={{ "/dataset/" + dataset.id + "/review/" + review.id + "/delete"}}>delete</a>
+				{% endif %}
 			</p>
 		{% endfor %}
 	{% endif %}

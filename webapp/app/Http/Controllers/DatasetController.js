@@ -190,6 +190,33 @@ class DatasetController {
 			response.redirect('back')
 		}
 	}
+
+	*
+	deleteReview(request, response) {
+		const review = yield Review.find(request.param('review'))
+
+		try {
+			yield review.delete()
+			yield request
+				.with({
+					infos: [{
+						message: "Review deleted successfully."
+					}]
+				})
+				.flash()
+			response.redirect('back')
+		} catch (exception) {
+			yield request
+				.with({
+					errors: [{
+						message: "Failed to delete the review.",
+					}]
+				})
+				.flash()
+
+			response.redirect('back')
+		}
+	}
 }
 
 function* doModification(property, current, modified, infos, errors) {

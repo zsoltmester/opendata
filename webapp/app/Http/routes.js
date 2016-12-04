@@ -35,3 +35,4 @@ Route.get('/dataset/:id/modify', 'DatasetController.showModify').middleware('aut
 Route.post('/dataset/:id/modify', 'DatasetController.modify').middleware('auth', 'perm')
 Route.get('/dataset/:id/delete', 'DatasetController.delete').middleware('auth', 'perm')
 Route.post('/dataset/:id/review/add', 'DatasetController.addReview').middleware('auth')
+Route.get('/dataset/:id/review/:review/delete', 'DatasetController.deleteReview').middleware('auth', 'perm')
