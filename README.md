@@ -3,8 +3,12 @@
 Szerver oldal elkészítése Node.js és Adonis.js segítségével. Nem kell a 2. beadandóban teszt, se a herokura nem kell feltölteni. Ettől függetlenül szeretném azt, hogy publikusan is elérhető legyen az alkalmazás.
 
 Implementálás:
-- rendes kezdőadatokkal feltölteni a db-t
 - code style improvements
+- bugfix, improvements:
+	- profil módosítánál a jelenlegi jelszó bekérése
+	- review előtörltése
+	- password-ot 2x bekérni
+- rendes kezdőadatokkal feltölteni a db-t
 - dokumentáció frissítése
 - tagelni a mostani a developot
 - visszarebaseelni a developra és törölni a server branchet

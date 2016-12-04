@@ -6,6 +6,7 @@
 
 {% block content %}
 	{% for dataset in datasets %}
+		{# linkTo('dataset_details', dataset.summary, {id: dataset.id}) #}
 		<p>
 			<a href={{ "/dataset/" + dataset.id}}>{{ dataset.summary }}</a>
 		</p>

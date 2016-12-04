@@ -30,12 +30,12 @@ class DatasetController {
 	}
 
 	*
-	showCreate(request, response) {
-		yield response.sendView('create')
+	showAdd(request, response) {
+		yield response.sendView('add')
 	}
 
 	*
-	create(request, response) {
+	add(request, response) {
 		const datasetData = request.only('summary', 'description', 'format', 'link', 'access')
 
 		const rules = {

@@ -9,10 +9,7 @@ class Permission {
 	handle(request, response, next) {
 		if (request.currentUser.isAdmin) {
 			yield next
-		}
-
-		if (request.match('/users')) {
-			response.unauthorized('Not enough privilages.')
+			return
 		}
 
 		if (request.match('/dataset/:id/modify') || request.match('/dataset/:id/delete')) {
@@ -20,6 +17,7 @@ class Permission {
 			const dataset = yield Dataset.find(datasetId)
 			if (dataset.user_id !== request.currentUser.id) {
 				response.unauthorized('Not enough privilages.')
+				return
 			}
 		}
 
@@ -28,6 +26,7 @@ class Permission {
 			const review = yield Review.find(reviewId)
 			if (review.user_id !== request.currentUser.id) {
 				response.unauthorized('Not enough privilages.')
+				return
 			}
 		}
 

@@ -8,7 +8,7 @@ class UserController {
 
 	*
 	showSignup(request, response) {
-		yield response.sendView('sign_up');
+		yield response.sendView('signUp');
 	}
 
 	*

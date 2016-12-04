@@ -15,17 +15,17 @@
 				<a href="/dataset/add">add</a>
 				{% if currentUser.isAdmin %}
 					&nbsp;
-					<a href="/users">users</a>
+					{{ linkTo('users', 'users')}}
 				{% endif %}
 				&nbsp;
-				<a href="/profile">{{ currentUser.username }}</a>
+				{{ linkTo('profile', currentUser.username)}}
 				&nbsp;
-				<a href="/logout">logout</a>
+				{{ linkTo('logout', 'logout') }}
 			{% else %}
 				&nbsp;
-				<a href="/login">login</a>
+				{{ linkTo('login', 'login')}}
 				&nbsp;
-				<a href="/signup">signup</a>
+				{{ linkTo('signup', 'signup')}}
 			{% endif %}
 		</p>
 

@@ -30,6 +30,7 @@ const globalMiddleware = [
 */
 const namedMiddleware = {
 	auth: 'Adonis/Middleware/Auth',
+	admin: 'App/Http/Middleware/Admin',
 	perm: 'App/Http/Middleware/Permission'
 }
 

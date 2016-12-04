@@ -5,26 +5,26 @@
 {% endblock %}
 
 {% block content %}
-	{{ form.open({action: 'UserController.signup'}) }}
+	{{ form.open({route: 'doSignup'}) }}
 
 	{{ csrfField }}
 
 	<fieldset>
 		{{ form.label('Username') }}
-		{{ form.text('username', null, {}) }}
+		{{ form.text('username') }}
 	</fieldset>
 
 	<fieldset>
 		{{ form.label('Password') }}
-		{{ form.password('password', null, {}) }}
+		{{ form.password('password') }}
 	</fieldset>
 
 	<fieldset>
 		{{ form.label('Email') }}
-		{{ form.email('email', null, {}) }}
+		{{ form.email('email') }}
 	</fieldset>
 
-	{{ form.submit('Sign Up', 'signup', {}) }}
+	{{ form.submit('Sign Up') }}
 
 	{{ form.close() }}
 {% endblock %}
