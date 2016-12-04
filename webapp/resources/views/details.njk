@@ -36,8 +36,30 @@
 		<a href={{ "/dataset/" + dataset.id + "/modify"}}>modify</a>
 		<a href={{ "/dataset/" + dataset.id + "/delete"}}>delete</a>
 	{% endif %}
+	{% if currentUser %}
+		<p>
+			{{ form.open({action: 'DatasetController.addReview', params: {id: dataset.id} }) }}
+
+			{{ csrfField }}
+
+			<fieldset>
+				{{ form.selectRange('rate', 1, 6) }}
+			</fieldset>
+
+			<fieldset>
+				{{ form.label('Comment') }}
+				{{ form.text('comment') }}
+			</fieldset>
+
+			{{ form.submit('Add Review') }}
+
+			{{ form.close() }}
+		</p>
+	{% endif %}
 	{% if reviews %}
-		Reviews:
+		<p>
+			Reviews:
+		</p>
 		{% for review in reviews %}
 			<p>
 				<strong>user_id:</strong>

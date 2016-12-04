@@ -143,6 +143,53 @@ class DatasetController {
 			response.redirect('back')
 		}
 	}
+
+	*
+	addReview(request, response) {
+		const input = request.only('rate', 'comment')
+
+		const rules = {
+			rate: 'required'
+		}
+
+		const validation = yield Validator.validate(input, rules)
+
+		if (validation.fails()) {
+			yield request
+				.withAll()
+				.andWith({
+					errors: validation.messages()
+				})
+				.flash()
+
+			response.redirect('back')
+			return
+		}
+
+		try {
+			input.user_id = request.currentUser.id
+			input.dataset_id = request.param('id')
+			yield Review.create(input)
+			yield request
+				.with({
+					infos: [{
+						message: "Review added successfully."
+					}]
+				})
+				.flash()
+			response.redirect('back')
+		} catch (exception) {
+			yield request
+				.withAll()
+				.andWith({
+					errors: [{
+						message: "Failed to add review.",
+					}]
+				})
+				.flash()
+			response.redirect('back')
+		}
+	}
 }
 
 function* doModification(property, current, modified, infos, errors) {
