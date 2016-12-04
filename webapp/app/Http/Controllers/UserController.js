@@ -167,7 +167,7 @@ class UserController {
 					message: "Failed to modify your email."
 				})
 			}
-		} else if (userData.email && userData.email.length > 0) {
+		} else if (input.email !== request.currentUser.email) {
 			for (var error in emailValidation.messages()) {
 				errors.push({
 					message: emailValidation.messages()[error].message

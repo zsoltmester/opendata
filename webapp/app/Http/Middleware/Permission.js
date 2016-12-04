@@ -21,8 +21,8 @@ class Permission {
 			}
 		}
 
-		if (request.match('/dataset/:id/review/:review/delete')) {
-			const reviewId = request.param('review')
+		if (request.match('/dataset/:id/review/:review_id/delete')) {
+			const reviewId = request.param('review_id')
 			const review = yield Review.find(reviewId)
 			if (review.user_id !== request.currentUser.id) {
 				response.unauthorized('Not enough privilages.')

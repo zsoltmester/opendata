@@ -200,7 +200,7 @@ class DatasetController {
 
 	*
 	deleteReview(request, response) {
-		const review = yield Review.find(request.param('review'))
+		const review = yield Review.find(request.param('review_id'))
 
 		try {
 			yield review.delete()

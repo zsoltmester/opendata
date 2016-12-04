@@ -5,7 +5,7 @@
 {% endblock %}
 
 {% block content %}
-	{{ form.open({ route: 'modify', params: {id: dataset.id} }) }}
+	{{ form.open({ route: 'doModify', params: {id: dataset.id} }) }}
 
 	{{ csrfField }}
 
