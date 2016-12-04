@@ -1,8 +1,9 @@
 'use strict'
 
-const User = use('App/Model/User')
 const Validator = use('Validator')
 const Hash = use('Hash')
+
+const User = use('App/Model/User')
 
 class UserController {
 
@@ -13,7 +14,7 @@ class UserController {
 
 	*
 	signup(request, response) {
-		const userData = request.only('username', 'password', 'email')
+		const input = request.only('username', 'password', 'email')
 
 		const rules = {
 			username: 'required|unique:users',
@@ -21,7 +22,7 @@ class UserController {
 			email: 'required|email|unique:users'
 		}
 
-		const validation = yield Validator.validate(userData, rules)
+		const validation = yield Validator.validate(input, rules)
 
 		if (validation.fails()) {
 			yield request
@@ -30,13 +31,12 @@ class UserController {
 					errors: validation.messages()
 				})
 				.flash()
-
 			response.redirect('back')
 			return
 		}
 
 		try {
-			yield User.create(userData)
+			yield User.create(input)
 			yield request
 				.with({
 					infos: [{
@@ -54,7 +54,6 @@ class UserController {
 					}]
 				})
 				.flash()
-
 			response.redirect('back')
 		}
 	}
@@ -66,14 +65,14 @@ class UserController {
 
 	*
 	login(request, response) {
-		const userData = request.only('username', 'password')
+		const input = request.only('username', 'password')
 
 		const rules = {
 			username: 'required',
 			password: 'required'
 		}
 
-		const validation = yield Validator.validate(userData, rules)
+		const validation = yield Validator.validate(input, rules)
 
 		if (validation.fails()) {
 			yield request
@@ -82,13 +81,12 @@ class UserController {
 					errors: validation.messages()
 				})
 				.flash()
-
 			response.redirect('back')
 			return
 		}
 
 		try {
-			yield request.auth.attempt(userData.username, userData.password)
+			yield request.auth.attempt(input.username, input.password)
 			yield request
 				.with({
 					infos: [{
@@ -106,7 +104,6 @@ class UserController {
 					}]
 				})
 				.flash()
-
 			response.redirect('back')
 		}
 	}
@@ -131,7 +128,7 @@ class UserController {
 
 	*
 	modify(request, response) {
-		const userData = request.only('password', 'email')
+		const input = request.only('password', 'email')
 
 		var infos = []
 		var errors = []
@@ -139,9 +136,9 @@ class UserController {
 		const passwordRules = {
 			password: 'required'
 		}
-		const passwordValidation = yield Validator.validate(userData, passwordRules)
+		const passwordValidation = yield Validator.validate(input, passwordRules)
 		if (!passwordValidation.fails()) {
-			request.currentUser.password = yield Hash.make(userData.password)
+			request.currentUser.password = yield Hash.make(input.password)
 			try {
 				yield request.currentUser.save()
 				infos.push({
@@ -157,9 +154,9 @@ class UserController {
 		const emailRules = {
 			email: 'required|email|unique:users'
 		}
-		const emailValidation = yield Validator.validate(userData, emailRules)
+		const emailValidation = yield Validator.validate(input, emailRules)
 		if (!emailValidation.fails()) {
-			request.currentUser.email = userData.email
+			request.currentUser.email = input.email
 			try {
 				yield request.currentUser.save()
 				infos.push({

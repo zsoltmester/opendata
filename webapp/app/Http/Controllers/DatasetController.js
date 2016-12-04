@@ -1,8 +1,9 @@
 'use strict'
 
+const Validator = use('Validator')
+
 const Dataset = use('App/Model/Dataset')
 const Review = use('App/Model/Review')
-const Validator = use('Validator')
 
 class DatasetController {
 
@@ -36,7 +37,7 @@ class DatasetController {
 
 	*
 	add(request, response) {
-		const datasetData = request.only('summary', 'description', 'format', 'link', 'access')
+		const input = request.only('summary', 'description', 'format', 'link', 'access')
 
 		const rules = {
 			summary: 'required|unique:datasets',
@@ -46,7 +47,7 @@ class DatasetController {
 			access: 'required'
 		}
 
-		const validation = yield Validator.validate(datasetData, rules)
+		const validation = yield Validator.validate(input, rules)
 
 		if (validation.fails()) {
 			yield request
@@ -55,14 +56,13 @@ class DatasetController {
 					errors: validation.messages()
 				})
 				.flash()
-
 			response.redirect('back')
 			return
 		}
 
 		try {
-			datasetData.user_id = request.currentUser.id
-			yield Dataset.create(datasetData)
+			input.user_id = request.currentUser.id
+			yield Dataset.create(input)
 			yield request
 				.with({
 					infos: [{
@@ -80,7 +80,6 @@ class DatasetController {
 					}]
 				})
 				.flash()
-
 			response.redirect('back')
 		}
 	}
@@ -96,16 +95,16 @@ class DatasetController {
 	*
 	modify(request, response) {
 		const dataset = yield Dataset.find(request.param('id'))
-		const modifiedDataset = request.only('summary', 'description', 'format', 'link', 'access')
+		const input = request.only('summary', 'description', 'format', 'link', 'access')
 
 		var infos = []
 		var errors = []
 
-		yield doModification('summary', dataset, modifiedDataset, infos, errors)
-		yield doModification('description', dataset, modifiedDataset, infos, errors)
-		yield doModification('format', dataset, modifiedDataset, infos, errors)
-		yield doModification('link', dataset, modifiedDataset, infos, errors)
-		yield doModification('access', dataset, modifiedDataset, infos, errors)
+		yield doModification('summary', dataset, input, infos, errors)
+		yield doModification('description', dataset, input, infos, errors)
+		yield doModification('format', dataset, input, infos, errors)
+		yield doModification('link', dataset, input, infos, errors)
+		yield doModification('access', dataset, input, infos, errors)
 
 		yield request
 			.with({
@@ -139,7 +138,6 @@ class DatasetController {
 					}]
 				})
 				.flash()
-
 			response.redirect('back')
 		}
 	}
@@ -161,7 +159,6 @@ class DatasetController {
 					errors: validation.messages()
 				})
 				.flash()
-
 			response.redirect('back')
 			return
 		}
@@ -223,7 +220,6 @@ class DatasetController {
 					}]
 				})
 				.flash()
-
 			response.redirect('back')
 		}
 	}
