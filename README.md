@@ -1,22 +1,3 @@
-# Improvements
-
-- A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
-- Profil módosítánál a jelenlegi jelszó bekérése.
-- Review előtöltése, ha már van.
-- A rate automatikusan frissüljön.
-
-- tagelni a mostani a developot
-- visszarebaseelni a developra és törölni a server branchet
-- tagelni a developot
-- deployolni valahova
-
-# Technical reference
-
-- http://webprogramozas.inf.elte.hu/alkfejl.php
-- http://www.adonisjs.com/docs/3.1
-- http://knexjs.org/
-- http://chancejs.com/
-
 # Open Data Hub
 
 Az *Open Data Hub* egy webes alkalmazás, melyen gyűjteni és rendszerezni tudjuk a nyílt adathalmazokat.
@@ -216,4 +197,18 @@ Bármilyen szövegszerkesztő használható a fejlesztéshez. Én [Atom](https:/
 2. A `.env.example` alapján hozz létre egy `.env` fájlt rootban.
 3. Az adatbázis létrehozása: `./ace migration:run`.
 4. Az adatbázis inicializálása: `./ace db:seed`.
-5. Az alkalmazás indítása: `npm start`. Fejlesztéshez ajánlott az `npm run dev`. 
+5. Az alkalmazás indítása: `npm start`. Fejlesztéshez ajánlott az `npm run dev`.
+
+# Improvements
+
+- A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
+- Profil módosítánál a jelenlegi jelszó bekérése.
+- Review előtöltése, ha már van.
+- A rate automatikusan frissüljön.
+
+# Technical reference
+
+- http://webprogramozas.inf.elte.hu/alkfejl.php
+- http://www.adonisjs.com/docs/3.1
+- http://knexjs.org/
+- http://chancejs.com/
