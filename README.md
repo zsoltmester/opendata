@@ -1,3 +1,47 @@
+# TODO
+
+- A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
+- Profil módosítánál a jelenlegi jelszó bekérése.
+- Review előtöltése, ha már van.
+- A rate automatikusan frissüljön.
+- Ha nem találjató az adott ID: response.notFound(msg).
+- A téma alkalmazása a base.njk-ban.
+- A téma alakalmazása mindenhol.
+- Kliens oldali validátor bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/10/#/5.
+- Ajax hívások bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/11/#/alkalmazsok-fejlesztse, http://webprogramozas.inf.elte.hu/alkfejl/12/#/alkalmazsok-fejlesztse
+- ...
+
+# Elvárások
+
+- Legalább 5 funkció megléte, amiből legalább 3 AJAX-os funkció.
+- Kikapcsolt JavaScript mellett az 1. beadandót kapjuk vissza.
+- Deploy a Herokura.
+- Dokumentáció:
+	- a funkcióban érintett fájlok mind kliens- és szerveroldalon
+	- a funkció működésének, folyamatának szöveges leírása (mikor mi történik, milyen eseményekre hogyan reagál, melyik - kódrészlet fut le, melyik függvény hívódik meg)
+	- valamelyik funkciónál 1 szekvenciadiagram a kiszolgálás folyamatáról
+- Tesztek:
+	- A tesztesetek felsorolása továbbra is szükséges, ezek mellett automatikus tesztek is szükségesek. Nem kell teljeskörű tesztelés, a hallgató mutassa meg, hogy képes ilyen tesztek írására.
+	- Tesztelési környezet bemutatása a dokumentációban (Selenium telepítése, tesztek futtatása)
+	- Funkcionális felületi tesztek: legalább 4 folyamat tesztelése Selenium IDE használatával
+
+# Help
+
+- https://github.com/elteKrisztianKereszti/alkfejl_2016_1_7
+- https://github.com/horvathgyozo/alkfejl_minta#a-dokument%C3%A1ci%C3%B3-szerkezete
+- https://github.com/pessaai/ckd193-beadando
+- http://metal.web.elte.hu/af/
+
+# Technical reference
+
+- http://webprogramozas.inf.elte.hu/alkfejl.php
+- http://www.adonisjs.com/docs/3.1
+- http://knexjs.org/
+- http://chancejs.com/
+- http://jquery.com/
+- https://bootswatch.com/sandstone/
+- https://atom.io/packages/atom-bootstrap3
+
 # Open Data Hub
 
 Az *Open Data Hub* egy webes alkalmazás, melyen gyűjteni és rendszerezni tudjuk a nyílt adathalmazokat.
@@ -198,17 +242,3 @@ Bármilyen szövegszerkesztő használható a fejlesztéshez. Én [Atom](https:/
 3. Az adatbázis létrehozása: `./ace migration:run`.
 4. Az adatbázis inicializálása: `./ace db:seed`.
 5. Az alkalmazás indítása: `npm start`. Fejlesztéshez ajánlott az `npm run dev`.
-
-# Improvements
-
-- A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
-- Profil módosítánál a jelenlegi jelszó bekérése.
-- Review előtöltése, ha már van.
-- A rate automatikusan frissüljön.
-
-# Technical reference
-
-- http://webprogramozas.inf.elte.hu/alkfejl.php
-- http://www.adonisjs.com/docs/3.1
-- http://knexjs.org/
-- http://chancejs.com/
