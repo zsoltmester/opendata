@@ -1,15 +1,17 @@
 # TODO
 
+- A téma alakalmazása mindenhol.
+- Kliens oldali validátor bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/10/#/5.
+- Ajax hívások bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/11/#/alkalmazsok-fejlesztse, http://webprogramozas.inf.elte.hu/alkfejl/12/#/alkalmazsok-fejlesztse
+- ...
+
+## Server side
+
 - A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
 - Profil módosítánál a jelenlegi jelszó bekérése.
 - Review előtöltése, ha már van.
 - A rate automatikusan frissüljön.
 - Ha nem találjató az adott ID: response.notFound(msg).
-- A téma alkalmazása a base.njk-ban.
-- A téma alakalmazása mindenhol.
-- Kliens oldali validátor bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/10/#/5.
-- Ajax hívások bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/11/#/alkalmazsok-fejlesztse, http://webprogramozas.inf.elte.hu/alkfejl/12/#/alkalmazsok-fejlesztse
-- ...
 
 # Elvárások
 
@@ -40,7 +42,6 @@
 - http://chancejs.com/
 - http://jquery.com/
 - https://bootswatch.com/sandstone/
-- https://atom.io/packages/atom-bootstrap3
 
 # Open Data Hub
 
