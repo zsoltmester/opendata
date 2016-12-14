@@ -5,26 +5,33 @@
 {% endblock %}
 
 {% block content %}
-	{{ form.open({route: 'doSignup'}) }}
+	<form class="form-horizontal" action="{{ 'doSignup' | route }}" method="POST">
+		{{ csrfField }}
+		<fieldset>
+			<div class="form-group">
+				<label for="inputUsername" class="col-lg-2 control-label">Username</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" value="{{ old('username') }}">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputPassword" class="col-lg-2 control-label">Password</label>
+				<div class="col-lg-10">
+					<input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" value="{{ old('password') }}">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="inputEmail" class="col-lg-2 control-label">Email</label>
+				<div class="col-lg-10">
+					<input type="text" class="form-control" id="inputEmail" name="email" placeholder="Email" value="{{ old('email') }}">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-lg-10 col-lg-offset-2">
+					<button type="submit" class="btn btn-primary">Sign Up</button>
+				</div>
+			</div>
+		</fieldset>
+	</form>
 
-	{{ csrfField }}
-
-	<fieldset>
-		{{ form.label('Username') }}
-		{{ form.text('username') }}
-	</fieldset>
-
-	<fieldset>
-		{{ form.label('Password') }}
-		{{ form.password('password') }}
-	</fieldset>
-
-	<fieldset>
-		{{ form.label('Email') }}
-		{{ form.email('email') }}
-	</fieldset>
-
-	{{ form.submit('Sign Up') }}
-
-	{{ form.close() }}
 {% endblock %}
