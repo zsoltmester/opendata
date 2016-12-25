@@ -187,7 +187,6 @@ Felugró ablakokban lesz:
 
 - `GET	/signup`: regisztrációs oldal
 - `POST	/signup`: regisztrációs adatok beküldése
-- `GET	/login`: login oldal
 - `POST	/login`: bejelentkezési adatok beküldése
 - `GET	/logout`: kijelentkezési szándék beküldése
 - `GET	/profile`: profil megtekintése és szerkesztése oldal

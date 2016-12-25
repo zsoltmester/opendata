@@ -59,11 +59,6 @@ class UserController {
 	}
 
 	*
-	showLogin(request, response) {
-		yield response.sendView('login');
-	}
-
-	*
 	login(request, response) {
 		const input = request.only('username', 'password')
 
