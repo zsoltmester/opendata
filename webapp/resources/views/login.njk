@@ -1,0 +1,25 @@
+<div class="modal" id="login">
+	<div class="modal-dialog">
+		<div class="modal-content">
+			<div class="modal-header">
+				<h4 class="modal-title">Login</h4>
+			</div>
+			<div class="modal-body">
+				<form class="form-horizontal" action="{{ 'doLogin' | route }}" method="POST">
+					{{ csrfField }}
+					<fieldset>
+						<div class="form-group">
+							<input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" value="{{ old('username') }}">
+						</div>
+						<div class="form-group">
+							<input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" value="{{ old('password') }}">
+						</div>
+						<div class="form-group text-center">
+							<button type="submit" class="btn btn-primary">Login</button>
+						</div>
+					</fieldset>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>

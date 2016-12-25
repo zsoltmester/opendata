@@ -13,91 +13,11 @@
 		</title>
 	</head>
 	<body>
-		<nav class="navbar navbar-default">
-			<div class="container-fluid">
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-					<a class="navbar-brand" href="/">Open Data Hub</a>
-				</div>
+		{% include 'navbar' %}
 
-				<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-					<ul class="nav navbar-nav navbar-right">
-						{% if currentUser %}
-							<li>
-								{{ linkTo('add', 'Add') }}
-							</li>
-							{% if currentUser.isAdmin %}
-								<li>
-									{{ linkTo('users', 'Users')}}
-								</li>
-							{% endif %}
-							<li>
-								{{ linkTo('profile', currentUser.username) }}
-							</li>
-							<li>
-								{{ linkTo('logout', 'Logout') }}
-							</li>
-						{% else %}
-							<li>
-								<a class="btn btn-default" data-toggle="modal" data-target="#login">Login</a>
-							</li>
-							<li>
-								{{ linkTo('signup', 'Signup') }}
-							</li>
-						{% endif %}
-					</ul>
-				</div>
-			</div>
-		</nav>
+		{% include 'messages' %}
 
-		{% if old('errors') %}
-			{% for error in old('errors') %}
-				<div class="alert alert-dismissible alert-danger">
-					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					{{ error.message }}
-				</div>
-			{% endfor %}
-		{% endif %}
-
-		{% if old('infos') %}
-			{% for info in old('infos') %}
-				<div class="alert alert-dismissible alert-success">
-					<button type="button" class="close" data-dismiss="alert">&times;</button>
-					{{ info.message }}
-				</div>
-			{% endfor %}
-		{% endif %}
-
-		<div class="modal" id="login">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title">Login</h4>
-					</div>
-					<div class="modal-body">
-						<form class="form-horizontal" action="{{ 'doLogin' | route }}" method="POST">
-							{{ csrfField }}
-							<fieldset>
-								<div class="form-group">
-									<input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" value="{{ old('username') }}">
-								</div>
-								<div class="form-group">
-									<input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" value="{{ old('password') }}">
-								</div>
-								<div class="form-group text-center">
-									<button type="submit" class="btn btn-primary">Login</button>
-								</div>
-							</fieldset>
-						</form>
-					</div>
-				</div>
-			</div>
-		</div>
+		{% include 'login' %}
 
 		<div class="container">
 			{% block content %}{% endblock %}
