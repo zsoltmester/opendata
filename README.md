@@ -1,6 +1,7 @@
 # TODO
 
 - A téma alakalmazása mindenhol.
+- A megerősíté kérdéseket feltevő dialogokat megcsinálni.
 - Kliens oldali validátor bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/10/#/5.
 - Ajax hívások bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/11/#/alkalmazsok-fejlesztse, http://webprogramozas.inf.elte.hu/alkfejl/12/#/alkalmazsok-fejlesztse
 - ...
