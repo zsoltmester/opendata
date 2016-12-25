@@ -11,7 +11,7 @@
 - Profil módosítánál a jelenlegi jelszó bekérése.
 - Review előtöltése, ha már van.
 - A rate automatikusan frissüljön.
-- Ha nem találjató az adott ID: response.notFound(msg).
+- Ha nem található az adott ID: response.notFound(msg).
 
 # Elvárások
 
