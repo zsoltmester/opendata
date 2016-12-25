@@ -54,7 +54,7 @@
 				{{ review.comment }}
 			</div>
 			<div class="panel-footer">
-			{{ review.updated_at }}
+				{{ review.updated_at }}
 				<div class="pull-right">
 					{% if currentUser.isAdmin or currentUser.id == review.user_id %}
 						<a href="{{ 'deleteReview' | route({id: dataset.id, review_id: review.id})}}" class="btn btn-danger ">Delete</a>
@@ -66,28 +66,6 @@
 	{% endfor %}
 
 	{% if currentUser %}
-		<a href="#" class="btn btn-primary pull-right">Review</a>
-	{% endif %}
-
-	{% if currentUser %}
-		<p>
-			{{ form.open({ route: 'review', params: {id: dataset.id} }) }}
-
-			{{ csrfField }}
-
-			<fieldset>
-				{{ form.label('Rate') }}
-				{{ form.selectRange('rate', 1, 6) }}
-			</fieldset>
-
-			<fieldset>
-				{{ form.label('Comment') }}
-				{{ form.text('comment') }}
-			</fieldset>
-
-			{{ form.submit('Add Review') }}
-
-			{{ form.close() }}
-		</p>
+		<a class="btn btn-primary pull-right" data-toggle="modal" data-target="#review">Review</a>
 	{% endif %}
 {% endblock %}
