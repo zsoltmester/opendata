@@ -5,36 +5,34 @@
 {% endblock %}
 
 {% block content %}
-	{{ form.open({ route: 'doModify', params: {id: dataset.id} }) }}
-
-	{{ csrfField }}
-
-	<fieldset>
-		{{ form.label('Summary') }}
-		{{ form.text('summary', dataset.summary) }}
-	</fieldset>
-
-	<fieldset>
-		{{ form.label('Description') }}
-		{{ form.textarea('description', dataset.description) }}
-	</fieldset>
-
-	<fieldset>
-		{{ form.label('Access') }}
-		{{ form.textarea('access', dataset.access) }}
-	</fieldset>
-
-	<fieldset>
-		{{ form.label('Format') }}
-		{{ form.text('format', dataset.format) }}
-	</fieldset>
-
-	<fieldset>
-		{{ form.label('Link') }}
-		{{ form.text('link', dataset.link) }}
-	</fieldset>
-
-	{{ form.submit('Modify') }}
-
-	{{ form.close() }}
+	<div class="text-center">
+		<form class="form-horizontal wrap" action="{{ 'doModify' | route({id: dataset.id}) }}" method="POST">
+			{{ csrfField }}
+			<fieldset>
+				<div class="form-group">
+					<label for="inputSummary" class="control-label">Summary</label>
+					<input type="text" class="form-control" id="inputSummary" name="summary" placeholder="give it a summary, like a title" value="{{ dataset.summary }}">
+				</div>
+				<div class="form-group">
+					<label for="inputDescription" class="control-label">Description</label>
+					<textarea class="form-control" id="inputDescription" name="description" placeholder="everything about the dataset" rows="10">{{ dataset.description }}</textarea>
+				</div>
+				<div class="form-group">
+					<label for="inputAccess" class="control-label">Access</label>
+					<textarea type="text" class="form-control" id="inputAccess" name="access" placeholder="like registration steps, quick api description, ..." rows="10">{{ dataset.access }}</textarea>
+				</div>
+				<div class="form-group">
+					<label for="inputFormat" class="control-label">Format</label>
+					<input type="text" class="form-control" id="inputFormat" name="format" placeholder="like csv, xlsx, sqlite, cdr, api ..." value="{{ dataset.format }}">
+				</div>
+				<div class="form-group">
+					<label for="inputLink" class="control-label">Link</label>
+					<input type="text" class="form-control" id="inputLink" name="link" placeholder="like https://www.cs.cmu.edu/~./enron/" value="{{ dataset.link }}">
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Modify Dataset</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
 {% endblock %}
