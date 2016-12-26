@@ -39,7 +39,7 @@
 
 	<div class="text-right">
 		{% if currentUser.isAdmin or currentUser.id == dataset.user_id %}
-			<a href="{{ 'modify' | route({id: dataset.id})}}" class="btn btn-primary">Modify</a>
+			<a href="{{ 'modify' | route({id: dataset.id})}}" class="btn btn-default">Modify</a>
 			<a href="{{ 'delete' | route({id: dataset.id})}}" class="btn btn-danger">Delete</a>
 		{% endif %}
 	</div>
@@ -56,7 +56,7 @@
 				{{ review.updated_at }}
 				<div class="pull-right">
 					{% if currentUser.isAdmin or currentUser.id == review.user_id %}
-						<a href="{{ 'deleteReview' | route({id: dataset.id, review_id: review.id})}}" class="btn btn-danger ">Delete</a>
+						<a href="{{ 'deleteReview' | route({id: dataset.id, review_id: review.id})}}" class="btn btn-danger btn-xs">Delete</a>
 					{% endif %}
 				</div>
 				<div class="clearfix"></div>
@@ -66,7 +66,7 @@
 
 	{% if currentUser %}
 		<div class="text-right">
-			<a class="btn btn-primary" data-toggle="modal" data-target="#review">Review</a>
+			<a class="btn btn-default" data-toggle="modal" data-target="#review">Review</a>
 		</div>
 		<br/>
 	{% endif %}

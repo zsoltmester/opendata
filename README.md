@@ -1,11 +1,14 @@
 # TODO
 
-- A megerősíté kérdéseket feltevő dialogokat megcsinálni.
 - Kliens oldali validátor bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/10/#/5.
 - Ajax hívások bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/11/#/alkalmazsok-fejlesztse, http://webprogramozas.inf.elte.hu/alkfejl/12/#/alkalmazsok-fejlesztse
 - ...
 
-## Server side
+## Client side improvements
+
+- A megerősíté kérdéseket feltevő dialogokat megcsinálni.
+
+## Server side improvements
 
 - A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
 - Profil módosítánál a jelenlegi jelszó bekérése.
