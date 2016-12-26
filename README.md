@@ -13,6 +13,7 @@
 - Review előtöltése, ha már van.
 - A rate automatikusan frissüljön.
 - Ha nem található az adott ID: response.notFound(msg).
+- Rendezve küldje le a szerver a listákat.
 
 # Elvárások
 

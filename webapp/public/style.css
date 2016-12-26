@@ -1,3 +1,11 @@
 .modal-dialog {
 	width: 250px;
 }
+
+.wrap {
+	display: inline-block;
+}
+
+textarea {
+	resize: none;
+}
