@@ -1,21 +1,20 @@
 # TODO
 
-- Kliens oldali validátor bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/10/#/5.
 - Ajax hívások bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/11/#/alkalmazsok-fejlesztse, http://webprogramozas.inf.elte.hu/alkfejl/12/#/alkalmazsok-fejlesztse
+- Scriptek betöltése: http://webprogramozas.inf.elte.hu/alkfejl/09/#/35
 - ...
 
-## Client side improvements
+## improvements
 
-- A megerősíté kérdéseket feltevő dialogokat megcsinálni.
-
-## Server side improvements
-
+- A megerősítő kérdéseket feltevő dialogokat megcsinálni.
 - A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
 - Profil módosítánál a jelenlegi jelszó bekérése.
 - Review előtöltése, ha már van.
 - A rate automatikusan frissüljön.
 - Ha nem található az adott ID: response.notFound(msg).
 - Rendezve küldje le a szerver a listákat.
+- A validáció fejlesztése.
+- About page.
 
 # Elvárások
 
@@ -36,7 +35,6 @@
 - https://github.com/elteKrisztianKereszti/alkfejl_2016_1_7
 - https://github.com/horvathgyozo/alkfejl_minta#a-dokument%C3%A1ci%C3%B3-szerkezete
 - https://github.com/pessaai/ckd193-beadando
-- http://metal.web.elte.hu/af/
 
 # Technical reference
 
@@ -46,6 +44,7 @@
 - http://chancejs.com/
 - http://jquery.com/
 - https://bootswatch.com/sandstone/
+- http://1000hz.github.io/bootstrap-validator/
 
 # Open Data Hub
 

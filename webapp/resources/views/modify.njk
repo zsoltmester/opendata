@@ -6,28 +6,33 @@
 
 {% block content %}
 	<div class="text-center">
-		<form class="form-horizontal wrap" action="{{ 'doModify' | route({id: dataset.id}) }}" method="POST">
+		<form class="form-horizontal wrap" action="{{ 'doModify' | route({id: dataset.id}) }}" method="POST" data-toggle="validator">
 			{{ csrfField }}
 			<fieldset>
 				<div class="form-group">
 					<label for="inputSummary" class="control-label">Summary</label>
-					<input type="text" class="form-control" id="inputSummary" name="summary" placeholder="give it a summary, like a title" value="{{ dataset.summary }}">
+					<input type="text" class="form-control" id="inputSummary" name="summary" placeholder="give it a summary, like a title" value="{{ dataset.summary }}" required>
+					<div class="help-block with-errors"></div>
 				</div>
 				<div class="form-group">
 					<label for="inputDescription" class="control-label">Description</label>
-					<textarea class="form-control" id="inputDescription" name="description" placeholder="everything about the dataset" rows="10">{{ dataset.description }}</textarea>
+					<textarea class="form-control" id="inputDescription" name="description" placeholder="everything about the dataset" rows="10" required>{{ dataset.description }}</textarea>
+					<div class="help-block with-errors"></div>
 				</div>
 				<div class="form-group">
 					<label for="inputAccess" class="control-label">Access</label>
-					<textarea type="text" class="form-control" id="inputAccess" name="access" placeholder="like registration steps, quick api description, ..." rows="10">{{ dataset.access }}</textarea>
+					<textarea type="text" class="form-control" id="inputAccess" name="access" placeholder="like registration steps, quick api description, ..." rows="10" required>{{ dataset.access }}</textarea>
+					<div class="help-block with-errors"></div>
 				</div>
 				<div class="form-group">
 					<label for="inputFormat" class="control-label">Format</label>
-					<input type="text" class="form-control" id="inputFormat" name="format" placeholder="like csv, xlsx, sqlite, cdr, api ..." value="{{ dataset.format }}">
+					<input type="text" class="form-control" id="inputFormat" name="format" placeholder="like csv, xlsx, sqlite, cdr, api ..." value="{{ dataset.format }}" required>
+					<div class="help-block with-errors"></div>
 				</div>
 				<div class="form-group">
 					<label for="inputLink" class="control-label">Link</label>
-					<input type="text" class="form-control" id="inputLink" name="link" placeholder="like https://www.cs.cmu.edu/~./enron/" value="{{ dataset.link }}">
+					<input type="url" class="form-control" id="inputLink" name="link" placeholder="like https://www.cs.cmu.edu/~./enron/" value="{{ dataset.link }}" data-error="This URL is invalid." required>
+					<div class="help-block with-errors"></div>
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary">Modify Dataset</button>

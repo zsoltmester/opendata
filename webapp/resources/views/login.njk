@@ -6,16 +6,18 @@
 					<h4 class="modal-title">Login</h4>
 				</div>
 				<div class="modal-body">
-					<form class="form-horizontal" action="{{ 'doLogin' | route }}" method="POST">
+					<form class="form-horizontal text-center" action="{{ 'doLogin' | route }}" method="POST" data-toggle="validator">
 						{{ csrfField }}
 						<fieldset>
 							<div class="form-group">
-								<input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" value="{{ old('username') }}">
+								<input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" value="{{ old('username') }}" required>
+								<div class="help-block with-errors"></div>
 							</div>
 							<div class="form-group">
-								<input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" value="{{ old('password') }}">
+								<input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" value="{{ old('password') }}" required>
+								<div class="help-block with-errors"></div>
 							</div>
-							<div class="form-group text-center">
+							<div class="form-group">
 								<button type="submit" class="btn btn-primary">Login</button>
 							</div>
 						</fieldset>

@@ -6,17 +6,20 @@
 
 {% block content %}
 	<div class="text-center">
-		<form class="form-horizontal wrap" action="{{ 'doSignup' | route }}" method="POST">
+		<form class="form-horizontal wrap" action="{{ 'doSignup' | route }}" method="POST" data-toggle="validator">
 			{{ csrfField }}
 			<fieldset>
 				<div class="form-group">
-					<input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" value="{{ old('username') }}">
+					<input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" value="{{ old('username') }}" required>
+					<div class="help-block with-errors"></div>
 				</div>
 				<div class="form-group">
-					<input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" value="{{ old('password') }}">
+					<input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password" value="{{ old('password') }}" required>
+					<div class="help-block with-errors"></div>
 				</div>
 				<div class="form-group">
-					<input type="text" class="form-control" id="inputEmail" name="email" placeholder="Email" value="{{ old('email') }}">
+					<input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" value="{{ old('email') }}" data-error="This email address is invalid." required>
+					<div class="help-block with-errors"></div>
 				</div>
 				<div class="form-group">
 					<button type="submit" class="btn btn-primary">Sign Up</button>
