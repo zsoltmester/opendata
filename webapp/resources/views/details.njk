@@ -6,6 +6,7 @@
 
 {% block scripts %}
 	<script src="/scripts/messages.js"></script>
+	<script src="/scripts/createReview.js"></script>
 	<script src="/scripts/deleteReview.js"></script>
 {% endblock %}
 
@@ -51,23 +52,33 @@
 
 	<h3>Reviews</h3>
 
-	{% for review in reviews %}
-		<div id="review{{ review.id }}" class="panel panel-default">
-			<div class="panel-body">
-				<span class="badge">{{ review.rate }}</span>
-				{{ review.comment }}
-			</div>
-			<div class="panel-footer">
-				{{ review.updated_at }}
-				<div class="pull-right">
-					{% if currentUser.isAdmin or currentUser.id == review.user_id %}
-						<a id="deleteReviewButton" href="{{ 'deleteReview' | route({id: dataset.id, review_id: review.id})}}" class="btn btn-danger btn-xs">Delete</a>
-					{% endif %}
+	<div id="reviews">
+		{% for review in reviews %}
+			<div id="review{{ review.id }}" class="panel panel-default">
+				<div class="panel-body">
+					<span class="badge">
+						<div id="reviewRate">
+							{{ review.rate }}
+						</div>
+					</span>
+					<div id="reviewComment">
+						{{ review.comment }}
+					</div>
 				</div>
-				<div class="clearfix"></div>
+				<div class="panel-footer">
+					<div id="reviewTimestamp">
+						{{ review.updated_at }}
+					</div>
+					<div class="pull-right">
+						{% if currentUser.isAdmin or currentUser.id == review.user_id %}
+							<a id="deleteReviewButton" href="{{ 'deleteReview' | route({id: dataset.id, review_id: review.id})}}" class="btn btn-danger btn-xs">Delete</a>
+						{% endif %}
+					</div>
+					<div class="clearfix"></div>
+				</div>
 			</div>
-		</div>
-	{% endfor %}
+		{% endfor %}
+	</div>
 
 	{% if currentUser %}
 		<div class="text-right">

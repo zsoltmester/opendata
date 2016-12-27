@@ -1,11 +1,11 @@
 # TODO
 
-- Ajax hívások bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/11/#/alkalmazsok-fejlesztse, http://webprogramozas.inf.elte.hu/alkfejl/12/#/alkalmazsok-fejlesztse. Még 2 AJAX-os funkció: review írás / módosítás, review törlés
+- A megerősítő kérdéseket feltevő dialogokat megcsinálni. http://webprogramozas.inf.elte.hu/alkfejl/11/#/25, http://webprogramozas.inf.elte.hu/alkfejl/12/#/4
+- Tesztek
 - ...
 
 ## improvements
 
-- A megerősítő kérdéseket feltevő dialogokat megcsinálni.
 - A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
 - Profil módosítánál a jelenlegi jelszó bekérése.
 - Review előtöltése, ha már van.
@@ -17,9 +17,8 @@
 
 # Elvárások
 
-- Legalább 5 funkció megléte, amiből legalább 3 AJAX-os funkció.
 - Kikapcsolt JavaScript mellett az 1. beadandót kapjuk vissza.
-- Deploy a Herokura.
+- Deploy a Herokura. (TODO tényleg kell?)
 - Dokumentáció:
 	- a funkcióban érintett fájlok mind kliens- és szerveroldalon
 	- a funkció működésének, folyamatának szöveges leírása (mikor mi történik, milyen eseményekre hogyan reagál, melyik - kódrészlet fut le, melyik függvény hívódik meg)
