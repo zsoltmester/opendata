@@ -170,14 +170,24 @@ class UserController {
 			}
 		}
 
-		yield request
-			.with({
-				infos: infos,
-				errors: errors
+		if (request.ajax()) {
+			response.send({
+				success: true,
+				infos,
+				errors,
+				email: request.currentUser.email
 			})
-			.flash()
+		} else {
+			yield request
+				.with({
+					infos: infos,
+					errors: errors
+				})
+				.flash()
 
-		response.redirect('back')
+			response.redirect('back')
+
+		}
 	}
 
 	*

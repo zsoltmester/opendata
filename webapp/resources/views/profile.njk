@@ -4,10 +4,15 @@
 	Profile
 {% endblock %}
 
+{% block scripts %}
+	<script src="/scripts/messages.js"></script>
+	<script src="/scripts/modifyProfile.js"></script>
+{% endblock %}
+
 {% block content %}
 	<div class="text-center">
-		<form class="form-horizontal wrap" action="{{ 'modifyProfile' | route }}" method="POST" data-toggle="validator">
-			{{ csrfField }}
+		<form id="modifyProfileForm" class="form-horizontal wrap" action="{{ 'modifyProfile' | route }}" method="POST" data-toggle="validator">
+			{{ csrfField | safe }}
 			<fieldset>
 				<div class="form-group">
 					<input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" value="{{ currentUser.username }}" disabled="true">

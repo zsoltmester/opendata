@@ -1,7 +1,6 @@
 # TODO
 
-- Ajax hívások bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/11/#/alkalmazsok-fejlesztse, http://webprogramozas.inf.elte.hu/alkfejl/12/#/alkalmazsok-fejlesztse
-- Scriptek betöltése: http://webprogramozas.inf.elte.hu/alkfejl/09/#/35
+- Ajax hívások bekötése mindenhova: http://webprogramozas.inf.elte.hu/alkfejl/11/#/alkalmazsok-fejlesztse, http://webprogramozas.inf.elte.hu/alkfejl/12/#/alkalmazsok-fejlesztse. Még 2 AJAX-os funkció: review írás / módosítás, review törlés
 - ...
 
 ## improvements
