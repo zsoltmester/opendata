@@ -4,6 +4,11 @@
 	{{ dataset.summary }}
 {% endblock %}
 
+{% block scripts %}
+	<script src="/scripts/messages.js"></script>
+	<script src="/scripts/deleteReview.js"></script>
+{% endblock %}
+
 {% block content %}
 
 	{% include 'review' %}
@@ -47,7 +52,7 @@
 	<h3>Reviews</h3>
 
 	{% for review in reviews %}
-		<div class="panel panel-default">
+		<div id="review{{ review.id }}" class="panel panel-default">
 			<div class="panel-body">
 				<span class="badge">{{ review.rate }}</span>
 				{{ review.comment }}
@@ -56,7 +61,7 @@
 				{{ review.updated_at }}
 				<div class="pull-right">
 					{% if currentUser.isAdmin or currentUser.id == review.user_id %}
-						<a href="{{ 'deleteReview' | route({id: dataset.id, review_id: review.id})}}" class="btn btn-danger btn-xs">Delete</a>
+						<a id="deleteReviewButton" href="{{ 'deleteReview' | route({id: dataset.id, review_id: review.id})}}" class="btn btn-danger btn-xs">Delete</a>
 					{% endif %}
 				</div>
 				<div class="clearfix"></div>

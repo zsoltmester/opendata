@@ -1,25 +1,21 @@
-$('#modifyProfileForm').on('submit', function(event) {
+$('#deleteReviewButton').on('click', function(event) {
 	event.preventDefault()
 
-	const url = $(this).attr('action')
-	const method = $(this).attr('method')
-	const data = $(this).serializeArray()
+	const url = $(this).attr('href')
 	const headers = {
 		'csrf-token': $('[name="_csrf"]').val()
 	}
 
-	$('#inputPassword').val('')
-
 	Promise.resolve(
 			$.ajax({
 				url,
-				method,
+				method: 'GET',
 				dataType: 'json',
-				data,
 				headers
 			})
 		).then(function(data) {
-			$('#inputEmail').val(data.email)
+			const reviewId = url.split('/')[4]
+			$('#review' + reviewId).remove()
 			printMessages($('#messages'), data.errors, data.infos)
 		})
 		.catch(function(reason) {

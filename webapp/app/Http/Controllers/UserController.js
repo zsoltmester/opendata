@@ -186,7 +186,6 @@ class UserController {
 				.flash()
 
 			response.redirect('back')
-
 		}
 	}
 

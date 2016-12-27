@@ -202,24 +202,34 @@ class DatasetController {
 	deleteReview(request, response) {
 		const review = yield Review.find(request.param('review_id'))
 
+		var infos = []
+		var errors = []
+
 		try {
 			yield review.delete()
-			yield request
-				.with({
-					infos: [{
-						message: "Review deleted successfully."
-					}]
-				})
-				.flash()
-			response.redirect('back')
+			infos.push({
+				message: "Review deleted successfully."
+			})
 		} catch (exception) {
+			errors.push({
+				message: "Failed to delete the review."
+			})
+		}
+
+		if (request.ajax()) {
+			response.send({
+				success: true,
+				infos,
+				errors
+			})
+		} else {
 			yield request
 				.with({
-					errors: [{
-						message: "Failed to delete the review.",
-					}]
+					infos: infos,
+					errors: errors
 				})
 				.flash()
+
 			response.redirect('back')
 		}
 	}
