@@ -5,9 +5,9 @@
 {% endblock %}
 
 {% block scripts %}
-	<script src="/scripts/messages.js"></script>
 	<script src="/scripts/createReview.js"></script>
 	<script src="/scripts/deleteReview.js"></script>
+	<script src="/scripts/deleteDataset.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -46,7 +46,7 @@
 	<div class="text-right">
 		{% if currentUser.isAdmin or currentUser.id == dataset.user_id %}
 			<a href="{{ 'modify' | route({id: dataset.id})}}" class="btn btn-default">Modify</a>
-			<a href="{{ 'delete' | route({id: dataset.id})}}" class="btn btn-danger">Delete</a>
+			<a id="deleteDatasetButton" href="{{ 'delete' | route({id: dataset.id})}}" class="btn btn-danger">Delete</a>
 		{% endif %}
 	</div>
 

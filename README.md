@@ -4,8 +4,9 @@
 - Tesztek
 - ...
 
-## improvements
+## Improvements
 
+- favicon.ico
 - A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
 - Profil módosítánál a jelenlegi jelszó bekérése.
 - Review előtöltése, ha már van.
