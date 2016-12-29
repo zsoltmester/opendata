@@ -1,12 +1,13 @@
 # TODO
 
-- A megerősítő kérdéseket feltevő dialogokat megcsinálni. http://webprogramozas.inf.elte.hu/alkfejl/11/#/25, http://webprogramozas.inf.elte.hu/alkfejl/12/#/4
-- Tesztek
-- ...
+- Tesztek: http://webprogramozas.inf.elte.hu/alkfejl/12/#/7
+- Automatikus futtatókörnyezetet csinálni a tesztekhez
+- Megnézni az improvementeket
+- Dokumentáció
+- Deploy
 
 ## Improvements
 
-- favicon.ico
 - A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
 - Profil módosítánál a jelenlegi jelszó bekérése.
 - Review előtöltése, ha már van.
