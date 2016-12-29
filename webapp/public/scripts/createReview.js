@@ -46,6 +46,7 @@ $('#createReviewForm').on('submit', function(event) {
 							</div>
 						</div>
 					`)
+				$('#deleteReviewButton').on('click', onDeleteReviewClicked)
 			}
 			printMessages($('#messages'), data.errors, data.infos)
 		})
