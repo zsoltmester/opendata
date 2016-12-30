@@ -1,6 +1,5 @@
 # TODO
 
-- Tesztek: http://webprogramozas.inf.elte.hu/alkfejl/12/#/7
 - Automatikus futtatókörnyezetet csinálni a tesztekhez
 - Megnézni az improvementeket
 - Dokumentáció
@@ -17,13 +16,16 @@
 - A validáció fejlesztése.
 - About page.
 
+## Bugs
+
+- A delete dataset funkcióhoz a confirmation nem jelenik meg minden esetben elsőre.
+
 # Elvárások
 
 - Kikapcsolt JavaScript mellett az 1. beadandót kapjuk vissza.
-- Deploy a Herokura. (TODO tényleg kell?)
 - Dokumentáció:
 	- a funkcióban érintett fájlok mind kliens- és szerveroldalon
-	- a funkció működésének, folyamatának szöveges leírása (mikor mi történik, milyen eseményekre hogyan reagál, melyik - kódrészlet fut le, melyik függvény hívódik meg)
+	- a funkció működésének, folyamatának szöveges leírása (mikor mi történik, milyen eseményekre hogyan reagál, melyik kódrészlet fut le, melyik függvény hívódik meg)
 	- valamelyik funkciónál 1 szekvenciadiagram a kiszolgálás folyamatáról
 - Tesztek:
 	- A tesztesetek felsorolása továbbra is szükséges, ezek mellett automatikus tesztek is szükségesek. Nem kell teljeskörű tesztelés, a hallgató mutassa meg, hogy képes ilyen tesztek írására.
