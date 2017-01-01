@@ -222,6 +222,35 @@ Bármilyen szövegszerkesztő használható a fejlesztéshez. Én [Atom](https:/
 4. Az adatbázis inicializálása: `./ace db:seed`.
 5. Az alkalmazás indítása: `npm start`. Fejlesztéshez ajánlott az `npm run dev`.
 
+## Tesztelés
+
+Az alkalmazáshoz csak funkcionális tesztek készültek
+
+### Funkcionális
+
+Ezek a tesztek a [Selenium IDE](http://www.seleniumhq.org/projects/ide/) segítségével készültek el. Telepíteni egy firefox plugin-ként lehet, [innen](https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/). Elindítani a *Developer* menüből lehet.
+
+A tesztek a `/test/functional/selenium` mappában találhatóak. Ezek megnyitásához először be kell tölteni a test suite-ot: `File / Open Test Suite...` és a `/test/functional/selenium/opendata.html`-t kell kiválasztani. A toolbar-on megtalálható *Base URL*-hez a következőt kell beírni: http://zsmester.ddns.net:8080/. Ezután el kell navigálni erre az oldalra a firefoxban, majd a Selenium IDE-ben az `Actions / Play entire test suite`-el lehet indítani a teszteket.
+
+#### Tesztesetek
+
+A következő funkcionális tesztesetekre kell tesztet csinálni, helyes és helytelen adatokkal is. Demonstráció céljából most csak 5 készült el.
+
+- Regisztráció (kész)
+- Bejelentkezés (kész)
+- Profil megtekintése
+- Profil módosítás
+- Kijelentkezés (kész)
+- Felhasználók listázása
+- Felhasználók kitiltása
+- Adathalmaz hozzáadása (kész)
+- Adathalmaz és a hozzá tartozó értékelések megtekintése (kész)
+- Adathalmaz módosítása
+- Adathalmaz törlése (kész)
+- Értékelés hozzáadása
+- Értékelés módosítása
+- Értékelés törlése
+
 ## Lehetséges fejlesztések
 
 - A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
@@ -237,7 +266,7 @@ Bármilyen szövegszerkesztő használható a fejlesztéshez. Én [Atom](https:/
 
 - A delete dataset funkcióhoz a confirmation nem jelenik meg minden esetben elsőre.
 
-## Technical reference
+## Irodalomjegyzék
 
 - http://webprogramozas.inf.elte.hu/alkfejl.php
 - http://www.adonisjs.com/docs/3.1
