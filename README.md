@@ -1,25 +1,3 @@
-# TODO
-
-- Dokumentáció (teszt, felhasználói, meg egy segítség a tanárnak)
-- Deploy
-
-# Elvárások
-
-- Kikapcsolt JavaScript mellett az 1. beadandót kapjuk vissza.
-- Dokumentáció:
-	- a funkcióban érintett fájlok mind kliens- és szerveroldalon
-	- a funkció működésének, folyamatának szöveges leírása (mikor mi történik, milyen eseményekre hogyan reagál, melyik kódrészlet fut le, melyik függvény hívódik meg)
-	- valamelyik funkciónál 1 szekvenciadiagram a kiszolgálás folyamatáról
-	- Felhasználói dokumentáció
-		- A futtatáshoz ajánlott hardver-, szoftver konfiguráció
-		- Telepítés lépései: hogyan kerül a Githubról a célgépre a program, hogyan kell elindítani
-		- A program használata
-- Tesztek:
-	- A tesztesetek felsorolása továbbra is szükséges, ezek mellett automatikus tesztek is szükségesek. Nem kell teljeskörű tesztelés, a hallgató mutassa meg, hogy képes ilyen tesztek írására.
-	- Tesztelési környezet bemutatása a dokumentációban (Selenium telepítése, tesztek futtatása)
-	- Funkcionális felületi tesztek: legalább 4 folyamat tesztelése Selenium IDE használatával
-
-
 # Open Data Hub
 
 Az *Open Data Hub* egy webes alkalmazás, melyen gyűjteni és rendszerezni tudjuk a nyílt adathalmazokat.
