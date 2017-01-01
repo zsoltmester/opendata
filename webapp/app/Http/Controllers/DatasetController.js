@@ -146,52 +146,64 @@ class DatasetController {
 	addReview(request, response) {
 		const input = request.only('rate', 'comment')
 
+		var infos = []
+		var errors = []
+
 		const rules = {
 			rate: 'required'
 		}
 
 		const validation = yield Validator.validate(input, rules)
 
+		var success
+		var oldReviewId
+		var newReview
+
 		if (validation.fails()) {
-			yield request
-				.withAll()
-				.andWith({
-					errors: validation.messages()
+			errors = validation.messages()
+			success = false
+		} else {
+			var oldReview
+			try {
+				oldReview = yield Review.query().where('dataset_id', request.param('id')).where('user_id', request.currentUser.id).first()
+
+				if (oldReview) {
+					oldReview.rate = input.rate
+					oldReview.comment = input.comment
+					yield oldReview.save()
+					oldReviewId = oldReview.id
+					newReview = oldReview
+				} else {
+					input.user_id = request.currentUser.id
+					input.dataset_id = request.param('id')
+					newReview = yield Review.create(input)
+				}
+
+				infos.push({
+					message: "Review " + (oldReview ? "modified" : "added") + " successfully."
 				})
-				.flash()
-			response.redirect('back')
-			return
+				success = true
+			} catch (exception) {
+				errors.push({
+					message: "Failed to " + (oldReview ? "modify" : "add") + " the review."
+				})
+				success = false
+			}
 		}
 
-		var oldReview
-		try {
-			oldReview = yield Review.query().where('dataset_id', request.param('id')).where('user_id', request.currentUser.id).first()
-
-			if (oldReview) {
-				oldReview.rate = input.rate
-				oldReview.comment = input.comment
-				yield oldReview.save()
-			} else {
-				input.user_id = request.currentUser.id
-				input.dataset_id = request.param('id')
-				yield Review.create(input)
-			}
+		if (request.ajax()) {
+			response.send({
+				success,
+				infos,
+				errors,
+				oldReviewId,
+				newReview
+			})
+		} else {
 			yield request
 				.with({
-					infos: [{
-						message: "Review " + (oldReview ? "modified" : "added") + " successfully."
-					}]
-				})
-				.flash()
-			response.redirect('back')
-		} catch (exception) {
-			console.log(exception)
-			yield request
-				.withAll()
-				.andWith({
-					errors: [{
-						message: "Failed to " + (oldReview ? "modify" : "add") + " the review."
-					}]
+					infos: infos,
+					errors: errors
 				})
 				.flash()
 			response.redirect('back')
@@ -202,22 +214,34 @@ class DatasetController {
 	deleteReview(request, response) {
 		const review = yield Review.find(request.param('review_id'))
 
+		var success
+		var infos = []
+		var errors = []
+
 		try {
 			yield review.delete()
-			yield request
-				.with({
-					infos: [{
-						message: "Review deleted successfully."
-					}]
-				})
-				.flash()
-			response.redirect('back')
+			infos.push({
+				message: "Review deleted successfully."
+			})
+			success = true
 		} catch (exception) {
+			errors.push({
+				message: "Failed to delete the review."
+			})
+			success = false
+		}
+
+		if (request.ajax()) {
+			response.send({
+				success,
+				infos,
+				errors
+			})
+		} else {
 			yield request
 				.with({
-					errors: [{
-						message: "Failed to delete the review.",
-					}]
+					infos: infos,
+					errors: errors
 				})
 				.flash()
 			response.redirect('back')

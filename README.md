@@ -87,7 +87,7 @@ Az oldaltérkép a fejléc alatti tartalomra vonatkozik.
 ##### Felhasználóknak
 
 - Főoldal: adathalmaz bejegyzések böngészése
-- -> Adathalmaz bejegyzés megtekintése és értékelése oldal; saját bejegyzés esetén azt törölni is itt lehet
+- -> Adathalmaz bejegyzés megtekintése és értékelése oldal; saját bejegyzés és értékelés esetén azt törölni is itt lehet
 - -> Adathalmaz hozzáadása oldal
 - -> Adathalmaz szerkesztése oldal
 - Profil megtekintése és szerkesztése oldal
@@ -142,7 +142,6 @@ Felugró ablakokban lesz:
 
 - `GET	/signup`: regisztrációs oldal
 - `POST	/signup`: regisztrációs adatok beküldése
-- `GET	/login`: login oldal
 - `POST	/login`: bejelentkezési adatok beküldése
 - `GET	/logout`: kijelentkezési szándék beküldése
 - `GET	/profile`: profil megtekintése és szerkesztése oldal
@@ -171,6 +170,8 @@ Felugró ablakokban lesz:
 
 ### Entitások
 
+( Az implementáció során kiderült, hogy az AdonisJs-ben könnyű kezelni minden táblánál egy `created_at` és egy `updated_at` mezőt. A lenti két ábrán a `date` helyett ezekre kell gondolni. )
+
 #### Adatmodell
 
 ![Adatmodell](docs/images/data-modell.png)
@@ -181,7 +182,7 @@ Felugró ablakokban lesz:
 
 ## Implementáció
 
-A szerveroldal Node.js alapon működik és az AdonisJs MVC framework segítségével épül fel.
+A szerveroldal **Node.js** alapon működik és az **AdonisJs** MVC framework segítségével épül fel.
 
 ### Könyvtárstruktúra
 
@@ -191,24 +192,102 @@ Az alkalmazást a repository **webapp** könyvtárában találod meg. A könyvt�
 
 Bármilyen szövegszerkesztő használható a fejlesztéshez. Én [Atom](https://atom.io/)-ot használtam.
 
+## Tesztelés (funkcionális)
+
+Az alkalmazáshoz csak funkcionális tesztek készültek.
+
+Ezek a tesztek a [Selenium IDE](http://www.seleniumhq.org/projects/ide/) segítségével készültek el. Telepíteni egy firefox plugin-ként lehet, [innen](https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/). Elindítani a *Developer* menüből lehet.
+
+A tesztek a `/test/functional/selenium` mappában találhatóak. Ezek megnyitásához először be kell tölteni a test suite-ot: `File / Open Test Suite...` és a `/test/functional/selenium/opendata.html`-t kell kiválasztani. A toolbar-on megtalálható *Base URL*-hez a következőt kell beírni: http://zsmester.ddns.net:8080/. Ezután el kell navigálni erre az oldalra a firefoxban, majd a Selenium IDE-ben az `Actions / Play entire test suite`-el lehet indítani a teszteket.
+
+### Tesztesetek
+
+A következő funkcionális tesztesetekre kell tesztet csinálni, helyes és helytelen adatokkal is. Demonstráció céljából most csak 5 készült el.
+
+- Regisztráció (kész)
+- Bejelentkezés (kész)
+- Profil megtekintése
+- Profil módosítás
+- Kijelentkezés (kész)
+- Felhasználók listázása
+- Felhasználók kitiltása
+- Adathalmaz hozzáadása (kész)
+- Adathalmaz és a hozzá tartozó értékelések megtekintése (kész)
+- Adathalmaz módosítása
+- Adathalmaz törlése (kész)
+- Értékelés hozzáadása
+- Értékelés módosítása
+- Értékelés törlése
+
+## Felhasználói dokumentáció
+
+### Követelmények
+
+- Operációs rendszernek Linux ajánlott, de az alkalmázás képes elfutni bármilyen Unix vagy Windows alapú rendszeren.
+- Az OS hardveres követelményénél erősebb hardveret nem igényel.
+- Az alábbi szoftverek megléte kötelező. A verzók ajánlottak, más verzókkal is működhet az alkalmazás.
+	- git --version
+	git version 2.7.4
+	- npm --version
+	3.5.2
+	- node --version
+	v4.2.6
+	- firefox --version
+	Mozilla Firefox 50.1.0
+
+### Letöltés
+
+A https://github.com/zsoltmester/opendata oldalról lehet a forrást letölteni zip-ként, vagy a repository-t clone-ozni: `git clone git@github.com:zsoltmester/opendata.git`. A `master` branchen mindig a legfrissebb release található meg.
+
 ### Telepítés (Linux rendszeren)
+
+A gyökérkönyvtárban kell az alábbiakat végrehajtani.
 
 1. A dependált npm modulok letöltése: `npm install`.
 2. A `.env.example` alapján hozz létre egy `.env` fájlt rootban.
 3. Az adatbázis létrehozása: `./ace migration:run`.
 4. Az adatbázis inicializálása: `./ace db:seed`.
-5. Az alkalmazás indítása: `npm start`. Fejlesztéshez ajánlott az `npm run dev`.
 
-# Improvements
+### Elindítás
+
+Az alkalmazás indítása: `npm start`. Fejlesztéshez ajánlott az `npm run dev`.
+
+### Használat
+
+1. Böngészőben nyissuk meg a főoldalt.
+2. Regisztráljunk felhasználónév, email és jelsző megadásával.
+3. Jelentkezzünk be az előbb megadott felhasználónévvel és jelszóval.
+
+Ezután a következő funkciókra leszünk jogosultak:
+
+- Az adathalmazok böngészése.
+- Egy adathalmaz és a hozzá tartozó értékelések megtekintése.
+- Új adathalmaz hozzáadása.
+- Saját magunk által hozzáadott adathalmazok szerkesztése és törlése.
+- Bármely adahalmaz értékelése, ennek módosítása és törlése.
+
+## Lehetséges fejlesztések
 
 - A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
 - Profil módosítánál a jelenlegi jelszó bekérése.
 - Review előtöltése, ha már van.
 - A rate automatikusan frissüljön.
+- Ha nem található az adott ID: response.notFound(msg).
+- Rendezve küldje le a szerver a listákat.
+- A validáció fejlesztése (trim, character whitelist, stb).
+- About page hazzáadása.
 
-# Technical reference
+## Ismert hibák
+
+- A delete dataset funkcióhoz a confirmation nem jelenik meg minden esetben elsőre.
+
+## Irodalomjegyzék
 
 - http://webprogramozas.inf.elte.hu/alkfejl.php
 - http://www.adonisjs.com/docs/3.1
 - http://knexjs.org/
 - http://chancejs.com/
+- http://jquery.com/
+- https://bootswatch.com/sandstone/
+- http://1000hz.github.io/bootstrap-validator/
+- http://www.guru99.com/first-selenium-test-script.html

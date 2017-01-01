@@ -5,13 +5,12 @@
 {% endblock %}
 
 {% block content %}
-	{% for dataset in datasets %}
-		<p>
-			{{ linkTo('show', dataset.summary, {id: dataset.id}) }}
-		</p>
-	{% else %}
-		<p>
-			No datasets found. Try to add one.
-		</p>
-	{% endfor %}
+	<ul class="list-group">
+		{% for dataset in datasets %}
+			<a href="{{ 'show' | route({id: dataset.id})}}" class="list-group-item">
+				<span class="badge">{{ dataset.format }}</span>
+				{{ dataset.summary }}
+			</a>
+		{% endfor %}
+	</ul>
 {% endblock %}

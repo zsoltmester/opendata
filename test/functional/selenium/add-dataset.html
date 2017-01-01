@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head profile="http://selenium-ide.openqa.org/profiles/test-case">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<link rel="selenium.base" href="http://zsmester.ddns.net:8080/" />
+<title>dataset</title>
+</head>
+<body>
+<table cellpadding="1" cellspacing="1" border="1">
+<thead>
+<tr><td rowspan="1" colspan="3">dataset</td></tr>
+</thead><tbody>
+<tr>
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>link=Add</td>
+	<td>Add</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>link=Add</td>
+	<td></td>
+</tr>
+<tr>
+	<td>click</td>
+	<td>//button[@type='submit']</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>css=ul.list-unstyled &gt; li</td>
+	<td>Please fill out this field.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[2]/div/ul/li</td>
+	<td>Please fill out this field.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[3]/div/ul/li</td>
+	<td>Please fill out this field.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[4]/div/ul/li</td>
+	<td>Please fill out this field.</td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[5]/div/ul/li</td>
+	<td>This URL is invalid.</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=inputSummary</td>
+	<td>seleniumtestdataset</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=inputDescription</td>
+	<td>seleniumtestdescription</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=inputAccess</td>
+	<td>seleniumtestaccess</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=inputFormat</td>
+	<td>seleniumtestformat</td>
+</tr>
+<tr>
+	<td>type</td>
+	<td>id=inputLink</td>
+	<td>https://seleniumtestlink</td>
+</tr>
+<tr>
+	<td>clickAndWait</td>
+	<td>css=button.btn.btn-primary</td>
+	<td></td>
+</tr>
+<tr>
+	<td>assertText</td>
+	<td>//div[@id='messages']/div</td>
+	<td>× Dataset added successfully.</td>
+</tr>
+</tbody></table>
+</body>
+</html>

@@ -2,53 +2,36 @@
 <html>
 	<head>
 		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/1000hz-bootstrap-validator/0.11.8/validator.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/co/4.1.0/index.min.js"></script>
+		<script src="/scripts/confirm.js"></script>
+		<script src="/scripts/messages.js"></script>
+
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/sandstone/bootstrap.min.css">
+		<link href="/style.css" rel="stylesheet">
+
 		<title>
 			{% block title %}{% endblock %}
 		</title>
 	</head>
 	<body>
-		<p>
-			There is the header: app logo and the buttons...
-			{{ linkTo('main', 'Home') }}
-			{% if currentUser %}
-				&nbsp;
-				{{ linkTo('add', 'Add') }}
-				{% if currentUser.isAdmin %}
-					&nbsp;
-					{{ linkTo('users', 'Users')}}
-				{% endif %}
-				&nbsp;
-				{{ linkTo('profile', currentUser.username) }}
-				&nbsp;
-				{{ linkTo('logout', 'Logout') }}
-			{% else %}
-				&nbsp;
-				{{ linkTo('login', 'Login') }}
-				&nbsp;
-				{{ linkTo('signup', 'Signup') }}
-			{% endif %}
-		</p>
+		{% include 'navbar' %}
 
-		{% if old('errors') %}
-			<ul>
-				{% for error in old('errors') %}
-					<li style="color: red">
-						{{ error.message }}
-					</li>
-				{% endfor %}
-			</ul>
-		{% endif %}
+		{% include 'messages' %}
 
-		{% if old('infos') %}
-			<ul>
-				{% for info in old('infos') %}
-					<li style="color: green">
-						{{ info.message }}
-					</li>
-				{% endfor %}
-			</ul>
-		{% endif %}
+		{% include 'login' %}
 
-		{% block content %}{% endblock %}
+		{% include 'confirm' %}
+
+		<div class="container">
+			{% block content %}{% endblock %}
+		</div>
+
+		{% block scripts %}{% endblock %}
 	</body>
 </html>

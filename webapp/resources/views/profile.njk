@@ -4,27 +4,31 @@
 	Profile
 {% endblock %}
 
+{% block scripts %}
+	<script src="/scripts/modifyProfile.js"></script>
+{% endblock %}
+
 {% block content %}
-	{{ form.open({ route: 'modifyProfile' }) }}
-
-	{{ csrfField }}
-
-	<fieldset>
-		{{ form.label('Username') }}
-		{{ form.text('username', currentUser.username, { disabled:"disabled" }) }}
-	</fieldset>
-
-	<fieldset>
-		{{ form.label('Password') }}
-		{{ form.password('password') }}
-	</fieldset>
-
-	<fieldset>
-		{{ form.label('Email') }}
-		{{ form.email('email', currentUser.email) }}
-	</fieldset>
-
-	{{ form.submit('Modify') }}
-
-	{{ form.close() }}
+	<div class="text-center">
+		<form id="modifyProfileForm" class="form-horizontal wrap" action="{{ 'modifyProfile' | route }}" method="POST" data-toggle="validator">
+			{{ csrfField | safe }}
+			<fieldset>
+				<div class="form-group">
+					<input type="text" class="form-control" id="inputUsername" name="username" placeholder="Username" value="{{ currentUser.username }}" disabled="true">
+					<div class="help-block with-errors"></div>
+				</div>
+				<div class="form-group">
+					<input type="password" class="form-control" id="inputPassword" name="password" placeholder="Password">
+					<div class="help-block with-errors"></div>
+				</div>
+				<div class="form-group">
+					<input type="email" class="form-control" id="inputEmail" name="email" placeholder="Email" value="{{ currentUser.email }}" data-error="This email address is invalid." required>
+					<div class="help-block with-errors"></div>
+				</div>
+				<div class="form-group">
+					<button type="submit" class="btn btn-primary">Modify</button>
+				</div>
+			</fieldset>
+		</form>
+	</div>
 {% endblock %}

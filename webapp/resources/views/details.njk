@@ -4,88 +4,86 @@
 	{{ dataset.summary }}
 {% endblock %}
 
+{% block scripts %}
+	<script src="/scripts/createReview.js"></script>
+	<script src="/scripts/deleteReview.js"></script>
+	<script src="/scripts/deleteDataset.js"></script>
+{% endblock %}
+
 {% block content %}
-	<strong>summary:</strong>
-	{{ dataset.summary }}
-	<br/>
-	<strong>description:</strong>
-	{{ dataset.description }}
-	<br/>
-	<strong>access:</strong>
-	{{ dataset.access }}
-	<br/>
-	<strong>format:</strong>
-	{{ dataset.format }}
-	<br/>
-	<strong>link:</strong>
-	{{ dataset.link }}
-	<br/>
-	<strong>rate:</strong>
-	{{ dataset.rate }}
-	<br/>
-	<strong>created_at:</strong>
-	{{ dataset.created_at }}
-	<br/>
-	<strong>updated_at:</strong>
-	{{ dataset.updated_at }}
-	<br/>
-	<strong>user_id:</strong>
-	{{ dataset.user_id }}
-	<br/>
-	{% if currentUser.isAdmin or currentUser.id == dataset.user_id %}
-		{{ linkTo('modify', 'Modify', {id: dataset.id}) }}
-		&nbsp;
-		{{ linkTo('delete', 'Delete', {id: dataset.id}) }}
-	{% endif %}
-	{% if currentUser %}
-		<p>
-			{{ form.open({ route: 'review', params: {id: dataset.id} }) }}
 
-			{{ csrfField }}
+	{% include 'review' %}
 
-			<fieldset>
-				{{ form.label('Rate') }}
-				{{ form.selectRange('rate', 1, 6) }}
-			</fieldset>
+	<h1>{{ dataset.summary }}</h1>
 
-			<fieldset>
-				{{ form.label('Comment') }}
-				{{ form.text('comment') }}
-			</fieldset>
+	<ul class="list-group">
+		<li class="list-group-item">
+			<h4 class="list-group-item-heading">{{ dataset.description }}</h4>
+			<p class="list-group-item-text">Description</p>
+		</li>
+		<li class="list-group-item">
+			<h4 class="list-group-item-heading">{{ dataset.access }}</h4>
+			<p class="list-group-item-text">Access</p>
+		</li>
+		<li class="list-group-item">
+			<h4 class="list-group-item-heading">{{ dataset.format }}</h4>
+			<p class="list-group-item-text">Format</p>
+		</li>
+		<li class="list-group-item">
+			<h4 class="list-group-item-heading">{{ dataset.link }}</h4>
+			<p class="list-group-item-text">Link</p>
+		</li>
+		<li class="list-group-item">
+			<h4 class="list-group-item-heading">{{ dataset.rate }}</h4>
+			<p class="list-group-item-text">Rate</p>
+		</li>
+		<li class="list-group-item">
+			<h4 class="list-group-item-heading">{{ dataset.updated_at }}</h4>
+			<p class="list-group-item-text">Updated at</p>
+		</li>
+	</ul>
 
-			{{ form.submit('Add Review') }}
+	<div class="text-right">
+		{% if currentUser.isAdmin or currentUser.id == dataset.user_id %}
+			<a href="{{ 'modify' | route({id: dataset.id})}}" class="btn btn-default">Modify</a>
+			<a id="deleteDatasetButton" href="{{ 'delete' | route({id: dataset.id})}}" class="btn btn-danger">Delete</a>
+		{% endif %}
+	</div>
 
-			{{ form.close() }}
-		</p>
-	{% endif %}
-	{% if reviews %}
-		<p>
-			Reviews:
-		</p>
+	<h3>Reviews</h3>
+
+	<div id="reviews">
 		{% for review in reviews %}
-			<p>
-				<strong>user_id:</strong>
-				{{ review.user_id }}
-				<br/>
-				<strong>dataset_id:</strong>
-				{{ review.dataset_id }}
-				<br/>
-				<strong>rate:</strong>
-				{{ review.rate }}
-				<br/>
-				<strong>comment:</strong>
-				{{ review.comment }}
-				<br/>
-				<strong>created_at:</strong>
-				{{ review.created_at }}
-				<br/>
-				<strong>updated_at:</strong>
-				{{ review.updated_at }}
-				<br/>
-				{% if currentUser.isAdmin or currentUser.id == review.user_id %}
-					{{ linkTo('deleteReview', 'Delete', {id: dataset.id, review_id: review.id}) }}
-				{% endif %}
-			</p>
+			<div id="review{{ review.id }}" class="panel panel-default">
+				<div class="panel-body">
+					<span class="badge">
+						<div id="reviewRate">
+							{{ review.rate }}
+						</div>
+					</span>
+					<div id="reviewComment">
+						{{ review.comment }}
+					</div>
+				</div>
+				<div class="panel-footer">
+					<div id="reviewTimestamp">
+						{{ review.updated_at }}
+					</div>
+					<div class="pull-right">
+						{% if currentUser.isAdmin or currentUser.id == review.user_id %}
+							<a id="deleteReviewButton" href="{{ 'deleteReview' | route({id: dataset.id, review_id: review.id})}}" class="btn btn-danger btn-xs">Delete</a>
+						{% endif %}
+					</div>
+					<div class="clearfix"></div>
+				</div>
+			</div>
 		{% endfor %}
+	</div>
+
+	{% if currentUser %}
+		<div class="text-right">
+			<a class="btn btn-default" data-toggle="modal" data-target="#review">Review</a>
+		</div>
+		<br/>
 	{% endif %}
 {% endblock %}

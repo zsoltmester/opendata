@@ -5,7 +5,6 @@ const Route = use('Route')
 // user pages
 Route.get('/signup', 'UserController.showSignup').as('signup')
 Route.post('/signup', 'UserController.signup').as('doSignup')
-Route.get('/login', 'UserController.showLogin').as('login')
 Route.post('/login', 'UserController.login').as('doLogin')
 Route.get('/logout', 'UserController.logout').as('logout').middleware('auth')
 Route.get('/profile', 'UserController.showProfile').as('profile').middleware('auth')
