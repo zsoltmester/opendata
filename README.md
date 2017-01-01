@@ -214,25 +214,15 @@ Az alkalmazást a repository **webapp** könyvtárában találod meg. A könyvt�
 
 Bármilyen szövegszerkesztő használható a fejlesztéshez. Én [Atom](https://atom.io/)-ot használtam.
 
-### Telepítés (Linux rendszeren)
+## Tesztelés (funkcionális)
 
-1. A dependált npm modulok letöltése: `npm install`.
-2. A `.env.example` alapján hozz létre egy `.env` fájlt rootban.
-3. Az adatbázis létrehozása: `./ace migration:run`.
-4. Az adatbázis inicializálása: `./ace db:seed`.
-5. Az alkalmazás indítása: `npm start`. Fejlesztéshez ajánlott az `npm run dev`.
-
-## Tesztelés
-
-Az alkalmazáshoz csak funkcionális tesztek készültek
-
-### Funkcionális
+Az alkalmazáshoz csak funkcionális tesztek készültek.
 
 Ezek a tesztek a [Selenium IDE](http://www.seleniumhq.org/projects/ide/) segítségével készültek el. Telepíteni egy firefox plugin-ként lehet, [innen](https://addons.mozilla.org/en-US/firefox/addon/selenium-ide/). Elindítani a *Developer* menüből lehet.
 
 A tesztek a `/test/functional/selenium` mappában találhatóak. Ezek megnyitásához először be kell tölteni a test suite-ot: `File / Open Test Suite...` és a `/test/functional/selenium/opendata.html`-t kell kiválasztani. A toolbar-on megtalálható *Base URL*-hez a következőt kell beírni: http://zsmester.ddns.net:8080/. Ezután el kell navigálni erre az oldalra a firefoxban, majd a Selenium IDE-ben az `Actions / Play entire test suite`-el lehet indítani a teszteket.
 
-#### Tesztesetek
+### Tesztesetek
 
 A következő funkcionális tesztesetekre kell tesztet csinálni, helyes és helytelen adatokkal is. Demonstráció céljából most csak 5 készült el.
 
@@ -250,6 +240,53 @@ A következő funkcionális tesztesetekre kell tesztet csinálni, helyes és hel
 - Értékelés hozzáadása
 - Értékelés módosítása
 - Értékelés törlése
+
+## Felhasználói dokumentáció
+
+### Követelmények
+
+- Operációs rendszernek Linux ajánlott, de az alkalmázás képes elfutni bármilyen Unix vagy Windows alapú rendszeren.
+- Az OS hardveres követelményénél erősebb hardveret nem igényel.
+- Az alábbi szoftverek megléte kötelező. A verzók ajánlottak, más verzókkal is működhet az alkalmazás.
+	- git --version
+	git version 2.7.4
+	- npm --version
+	3.5.2
+	- node --version
+	v4.2.6
+	- firefox --version
+	Mozilla Firefox 50.1.0
+
+### Letöltés
+
+A https://github.com/zsoltmester/opendata oldalról lehet a forrást letölteni zip-ként, vagy a repository-t clone-ozni: `git clone git@github.com:zsoltmester/opendata.git`. A `master` branchen mindig a legfrissebb release található meg.
+
+### Telepítés (Linux rendszeren)
+
+A gyökérkönyvtárban kell az alábbiakat végrehajtani.
+
+1. A dependált npm modulok letöltése: `npm install`.
+2. A `.env.example` alapján hozz létre egy `.env` fájlt rootban.
+3. Az adatbázis létrehozása: `./ace migration:run`.
+4. Az adatbázis inicializálása: `./ace db:seed`.
+
+### Elindítás
+
+Az alkalmazás indítása: `npm start`. Fejlesztéshez ajánlott az `npm run dev`.
+
+### Használat
+
+1. Böngészőben nyissuk meg a főoldalt.
+2. Regisztráljunk felhasználónév, email és jelsző megadásával.
+3. Jelentkezzünk be az előbb megadott felhasználónévvel és jelszóval.
+
+Ezután a következő funkciókra leszünk jogosultak:
+
+- Az adathalmazok böngészése.
+- Egy adathalmaz és a hozzá tartozó értékelések megtekintése.
+- Új adathalmaz hozzáadása.
+- Saját magunk által hozzáadott adathalmazok szerkesztése és törlése.
+- Bármely adahalmaz értékelése, ennek módosítása és törlése.
 
 ## Lehetséges fejlesztések
 
