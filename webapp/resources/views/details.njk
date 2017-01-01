@@ -1,0 +1,91 @@
+{% extends 'base' %}
+
+{% block title %}
+	{{ dataset.summary }}
+{% endblock %}
+
+{% block content %}
+	<strong>summary:</strong>
+	{{ dataset.summary }}
+	<br/>
+	<strong>description:</strong>
+	{{ dataset.description }}
+	<br/>
+	<strong>access:</strong>
+	{{ dataset.access }}
+	<br/>
+	<strong>format:</strong>
+	{{ dataset.format }}
+	<br/>
+	<strong>link:</strong>
+	{{ dataset.link }}
+	<br/>
+	<strong>rate:</strong>
+	{{ dataset.rate }}
+	<br/>
+	<strong>created_at:</strong>
+	{{ dataset.created_at }}
+	<br/>
+	<strong>updated_at:</strong>
+	{{ dataset.updated_at }}
+	<br/>
+	<strong>user_id:</strong>
+	{{ dataset.user_id }}
+	<br/>
+	{% if currentUser.isAdmin or currentUser.id == dataset.user_id %}
+		{{ linkTo('modify', 'Modify', {id: dataset.id}) }}
+		&nbsp;
+		{{ linkTo('delete', 'Delete', {id: dataset.id}) }}
+	{% endif %}
+	{% if currentUser %}
+		<p>
+			{{ form.open({ route: 'review', params: {id: dataset.id} }) }}
+
+			{{ csrfField }}
+
+			<fieldset>
+				{{ form.label('Rate') }}
+				{{ form.selectRange('rate', 1, 6) }}
+			</fieldset>
+
+			<fieldset>
+				{{ form.label('Comment') }}
+				{{ form.text('comment') }}
+			</fieldset>
+
+			{{ form.submit('Add Review') }}
+
+			{{ form.close() }}
+		</p>
+	{% endif %}
+	{% if reviews %}
+		<p>
+			Reviews:
+		</p>
+		{% for review in reviews %}
+			<p>
+				<strong>user_id:</strong>
+				{{ review.user_id }}
+				<br/>
+				<strong>dataset_id:</strong>
+				{{ review.dataset_id }}
+				<br/>
+				<strong>rate:</strong>
+				{{ review.rate }}
+				<br/>
+				<strong>comment:</strong>
+				{{ review.comment }}
+				<br/>
+				<strong>created_at:</strong>
+				{{ review.created_at }}
+				<br/>
+				<strong>updated_at:</strong>
+				{{ review.updated_at }}
+				<br/>
+				{% if currentUser.isAdmin or currentUser.id == review.user_id %}
+					{{ linkTo('deleteReview', 'Delete', {id: dataset.id, review_id: review.id}) }}
+				{% endif %}
+			</p>
+		{% endfor %}
+	{% endif %}
+{% endblock %}

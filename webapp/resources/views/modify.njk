@@ -1,0 +1,40 @@
+{% extends 'base' %}
+
+{% block title %}
+	Modify Dataset
+{% endblock %}
+
+{% block content %}
+	{{ form.open({ route: 'doModify', params: {id: dataset.id} }) }}
+
+	{{ csrfField }}
+
+	<fieldset>
+		{{ form.label('Summary') }}
+		{{ form.text('summary', dataset.summary) }}
+	</fieldset>
+
+	<fieldset>
+		{{ form.label('Description') }}
+		{{ form.textarea('description', dataset.description) }}
+	</fieldset>
+
+	<fieldset>
+		{{ form.label('Access') }}
+		{{ form.textarea('access', dataset.access) }}
+	</fieldset>
+
+	<fieldset>
+		{{ form.label('Format') }}
+		{{ form.text('format', dataset.format) }}
+	</fieldset>
+
+	<fieldset>
+		{{ form.label('Link') }}
+		{{ form.text('link', dataset.link) }}
+	</fieldset>
+
+	{{ form.submit('Modify') }}
+
+	{{ form.close() }}
+{% endblock %}

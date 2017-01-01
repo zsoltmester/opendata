@@ -86,7 +86,7 @@ Az oldaltérkép a fejléc alatti tartalomra vonatkozik.
 
 ##### Felhasználóknak
 
-- Főoldal: adathalmaz bejegyzések böngészése és keresése
+- Főoldal: adathalmaz bejegyzések böngészése
 - -> Adathalmaz bejegyzés megtekintése és értékelése oldal; saját bejegyzés esetén azt törölni is itt lehet
 - -> Adathalmaz hozzáadása oldal
 - -> Adathalmaz szerkesztése oldal
@@ -136,28 +136,38 @@ Felugró ablakokban lesz:
 
 #### Végpontok
 
-- `GET /:query`: főoldal, opcionális keresési paraméterrel
-- `POST /login`: bejelentkezési adatok beküldése
-- `GET /signup`: regisztrációs oldal
-- `POST /signup`: regisztrációs adatok beküldése
-- `GET /logout`: kijelentkezési szándék beküldése
-- `GET /profile`: profil megtekintése és szerkesztése oldal
-- `POST /profile`: szerkesztett profil adatok beküldése
-- `GET /user`: felhasználók böngészése és kitiltása oldal
-- `POST /user`: felhasználó törlése szándék beküldése
-- `GET /:id`: adathalmaz bejegyzés megtekintése oldal
-- `GET /:id/delete`: bejegyzés törlése szándék beküldése
-- `GET /:id/modify`: bejegyzés szerkesztése oldal
-- `POST /:id/modify`: szerkesztett bejegyzési adatok beküldése
-- `POST /:id/review/new`: értékelés adatainak beküldése
-- `GET /:id/review/:review_id/delete`: értékelés törlése szándék beküldése
-- `GET /new`: bejegyzés létrehozása oldal
-- `POST /new`: bejegyzés létrehozásához szükséges adatok beküldése
+- `GET /`: főoldal
+
+##### Felhasználó
+
+- `GET	/signup`: regisztrációs oldal
+- `POST	/signup`: regisztrációs adatok beküldése
+- `GET	/login`: login oldal
+- `POST	/login`: bejelentkezési adatok beküldése
+- `GET	/logout`: kijelentkezési szándék beküldése
+- `GET	/profile`: profil megtekintése és szerkesztése oldal
+- `POST	/profile`: szerkesztett profil adatok beküldése
+
+##### Admin
+
+- `GET	/manage/users`: felhasználók böngészése és kitiltása oldal
+- `POST	/manage/users`: felhasználó törlése szándék beküldése
+
+##### Adathalmaz
+
+- `GET	/dataset/add`: bejegyzés létrehozása oldal
+- `POST	/dataset/add`: bejegyzés létrehozásához szükséges adatok beküldése
+- `GET	/dataset/:id/show`: adathalmaz bejegyzés megtekintése oldal
+- `GET	/dataset/:id/modify`: bejegyzés szerkesztése oldal
+- `POST	/dataset/:id/modify`: szerkesztett bejegyzési adatok beküldése
+- `GET	/dataset/:id/delete`: bejegyzés törlése szándék beküldése
+- `POST	/dataset/:id/review/add`: értékelés adatainak beküldése
+- `GET	/dataset/:id/review/:review_id/delete`: értékelés törlése szándék beküldése
 
 #### Dinamikus működés
 
 ![Dinamikus működés 1](docs/images/dynamic-1.png)
-![Dinamikus működés 1](docs/images/dynamic-2.png)
+![Dinamikus működés 2](docs/images/dynamic-2.png)
 
 ### Entitások
 
@@ -168,3 +178,37 @@ Felugró ablakokban lesz:
 #### Adatbázismodell
 
 ![Adatbázismodell](docs/images/database-modell.png)
+
+## Implementáció
+
+A szerveroldal Node.js alapon működik és az AdonisJs MVC framework segítségével épül fel.
+
+### Könyvtárstruktúra
+
+Az alkalmazást a repository **webapp** könyvtárában találod meg. A könyvtárstruktúrát az AdonisJs definiálta, amiről [itt](http://www.adonisjs.com/docs/3.1/directory-structure) olvashatsz.
+
+### Fejlesztői környezet
+
+Bármilyen szövegszerkesztő használható a fejlesztéshez. Én [Atom](https://atom.io/)-ot használtam.
+
+### Telepítés (Linux rendszeren)
+
+1. A dependált npm modulok letöltése: `npm install`.
+2. A `.env.example` alapján hozz létre egy `.env` fájlt rootban.
+3. Az adatbázis létrehozása: `./ace migration:run`.
+4. Az adatbázis inicializálása: `./ace db:seed`.
+5. Az alkalmazás indítása: `npm start`. Fejlesztéshez ajánlott az `npm run dev`.
+
+# Improvements
+
+- A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
+- Profil módosítánál a jelenlegi jelszó bekérése.
+- Review előtöltése, ha már van.
+- A rate automatikusan frissüljön.
+
+# Technical reference
+
+- http://webprogramozas.inf.elte.hu/alkfejl.php
+- http://www.adonisjs.com/docs/3.1
+- http://knexjs.org/
+- http://chancejs.com/

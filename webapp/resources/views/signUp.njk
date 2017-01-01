@@ -1,0 +1,30 @@
+{% extends 'base' %}
+
+{% block title %}
+	Sign Up
+{% endblock %}
+
+{% block content %}
+	{{ form.open({route: 'doSignup'}) }}
+
+	{{ csrfField }}
+
+	<fieldset>
+		{{ form.label('Username') }}
+		{{ form.text('username') }}
+	</fieldset>
+
+	<fieldset>
+		{{ form.label('Password') }}
+		{{ form.password('password') }}
+	</fieldset>
+
+	<fieldset>
+		{{ form.label('Email') }}
+		{{ form.email('email') }}
+	</fieldset>
+
+	{{ form.submit('Sign Up') }}
+
+	{{ form.close() }}
+{% endblock %}

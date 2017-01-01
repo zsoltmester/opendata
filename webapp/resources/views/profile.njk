@@ -1,0 +1,30 @@
+{% extends 'base' %}
+
+{% block title %}
+	Profile
+{% endblock %}
+
+{% block content %}
+	{{ form.open({ route: 'modifyProfile' }) }}
+
+	{{ csrfField }}
+
+	<fieldset>
+		{{ form.label('Username') }}
+		{{ form.text('username', currentUser.username, { disabled:"disabled" }) }}
+	</fieldset>
+
+	<fieldset>
+		{{ form.label('Password') }}
+		{{ form.password('password') }}
+	</fieldset>
+
+	<fieldset>
+		{{ form.label('Email') }}
+		{{ form.email('email', currentUser.email) }}
+	</fieldset>
+
+	{{ form.submit('Modify') }}
+
+	{{ form.close() }}
+{% endblock %}

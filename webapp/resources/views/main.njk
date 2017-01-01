@@ -1,0 +1,17 @@
+{% extends 'base' %}
+
+{% block title %}
+	Open Data Hub
+{% endblock %}
+
+{% block content %}
+	{% for dataset in datasets %}
+		<p>
+			{{ linkTo('show', dataset.summary, {id: dataset.id}) }}
+		</p>
+	{% else %}
+		<p>
+			No datasets found. Try to add one.
+		</p>
+	{% endfor %}
+{% endblock %}

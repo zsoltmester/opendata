@@ -1,0 +1,40 @@
+{% extends 'base' %}
+
+{% block title %}
+	Add Dataset
+{% endblock %}
+
+{% block content %}
+	{{ form.open({route: 'doAdd'}) }}
+
+	{{ csrfField }}
+
+	<fieldset>
+		{{ form.label('Summary') }}
+		{{ form.text('summary', 'give it a summary, like a title') }}
+	</fieldset>
+
+	<fieldset>
+		{{ form.label('Description') }}
+		{{ form.textarea('description', 'everything about the dataset') }}
+	</fieldset>
+
+	<fieldset>
+		{{ form.label('Access') }}
+		{{ form.textarea('access', 'like registration steps, quick api description, ...') }}
+	</fieldset>
+
+	<fieldset>
+		{{ form.label('Format') }}
+		{{ form.text('format', 'like csv, xlsx, sqlite, cdr, api ...') }}
+	</fieldset>
+
+	<fieldset>
+		{{ form.label('Link') }}
+		{{ form.text('link', 'like https://www.cs.cmu.edu/~./enron/') }}
+	</fieldset>
+
+	{{ form.submit('Add Dataset') }}
+
+	{{ form.close() }}
+{% endblock %}
