@@ -1,24 +1,7 @@
 # TODO
 
-- Automatikus futtatókörnyezetet csinálni a tesztekhez
-- Megnézni az improvementeket
-- Dokumentáció
+- Dokumentáció (teszt, felhasználói, meg egy segítség a tanárnak)
 - Deploy
-
-## Improvements
-
-- A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
-- Profil módosítánál a jelenlegi jelszó bekérése.
-- Review előtöltése, ha már van.
-- A rate automatikusan frissüljön.
-- Ha nem található az adott ID: response.notFound(msg).
-- Rendezve küldje le a szerver a listákat.
-- A validáció fejlesztése.
-- About page.
-
-## Bugs
-
-- A delete dataset funkcióhoz a confirmation nem jelenik meg minden esetben elsőre.
 
 # Elvárások
 
@@ -27,26 +10,15 @@
 	- a funkcióban érintett fájlok mind kliens- és szerveroldalon
 	- a funkció működésének, folyamatának szöveges leírása (mikor mi történik, milyen eseményekre hogyan reagál, melyik kódrészlet fut le, melyik függvény hívódik meg)
 	- valamelyik funkciónál 1 szekvenciadiagram a kiszolgálás folyamatáról
+	- Felhasználói dokumentáció
+		- A futtatáshoz ajánlott hardver-, szoftver konfiguráció
+		- Telepítés lépései: hogyan kerül a Githubról a célgépre a program, hogyan kell elindítani
+		- A program használata
 - Tesztek:
 	- A tesztesetek felsorolása továbbra is szükséges, ezek mellett automatikus tesztek is szükségesek. Nem kell teljeskörű tesztelés, a hallgató mutassa meg, hogy képes ilyen tesztek írására.
 	- Tesztelési környezet bemutatása a dokumentációban (Selenium telepítése, tesztek futtatása)
 	- Funkcionális felületi tesztek: legalább 4 folyamat tesztelése Selenium IDE használatával
 
-# Help
-
-- https://github.com/elteKrisztianKereszti/alkfejl_2016_1_7
-- https://github.com/horvathgyozo/alkfejl_minta#a-dokument%C3%A1ci%C3%B3-szerkezete
-- https://github.com/pessaai/ckd193-beadando
-
-# Technical reference
-
-- http://webprogramozas.inf.elte.hu/alkfejl.php
-- http://www.adonisjs.com/docs/3.1
-- http://knexjs.org/
-- http://chancejs.com/
-- http://jquery.com/
-- https://bootswatch.com/sandstone/
-- http://1000hz.github.io/bootstrap-validator/
 
 # Open Data Hub
 
@@ -137,7 +109,7 @@ Az oldaltérkép a fejléc alatti tartalomra vonatkozik.
 ##### Felhasználóknak
 
 - Főoldal: adathalmaz bejegyzések böngészése
-- -> Adathalmaz bejegyzés megtekintése és értékelése oldal; saját bejegyzés esetén azt törölni is itt lehet
+- -> Adathalmaz bejegyzés megtekintése és értékelése oldal; saját bejegyzés és értékelés esetén azt törölni is itt lehet
 - -> Adathalmaz hozzáadása oldal
 - -> Adathalmaz szerkesztése oldal
 - Profil megtekintése és szerkesztése oldal
@@ -220,6 +192,8 @@ Felugró ablakokban lesz:
 
 ### Entitások
 
+( Az implementáció során kiderült, hogy az AdonisJs-ben könnyű kezelni minden táblánál egy `created_at` és egy `updated_at` mezőt. A lenti két ábrán a `date` helyett ezekre kell gondolni. )
+
 #### Adatmodell
 
 ![Adatmodell](docs/images/data-modell.png)
@@ -230,7 +204,7 @@ Felugró ablakokban lesz:
 
 ## Implementáció
 
-A szerveroldal Node.js alapon működik és az AdonisJs MVC framework segítségével épül fel.
+A szerveroldal **Node.js** alapon működik és az **AdonisJs** MVC framework segítségével épül fel.
 
 ### Könyvtárstruktúra
 
@@ -247,3 +221,29 @@ Bármilyen szövegszerkesztő használható a fejlesztéshez. Én [Atom](https:/
 3. Az adatbázis létrehozása: `./ace migration:run`.
 4. Az adatbázis inicializálása: `./ace db:seed`.
 5. Az alkalmazás indítása: `npm start`. Fejlesztéshez ajánlott az `npm run dev`.
+
+## Lehetséges fejlesztések
+
+- A jelszót kétszer bekérni regisztrálásnál és jelszó változtatásnál.
+- Profil módosítánál a jelenlegi jelszó bekérése.
+- Review előtöltése, ha már van.
+- A rate automatikusan frissüljön.
+- Ha nem található az adott ID: response.notFound(msg).
+- Rendezve küldje le a szerver a listákat.
+- A validáció fejlesztése (trim, character whitelist, stb).
+- About page hazzáadása.
+
+## Ismert hibák
+
+- A delete dataset funkcióhoz a confirmation nem jelenik meg minden esetben elsőre.
+
+## Technical reference
+
+- http://webprogramozas.inf.elte.hu/alkfejl.php
+- http://www.adonisjs.com/docs/3.1
+- http://knexjs.org/
+- http://chancejs.com/
+- http://jquery.com/
+- https://bootswatch.com/sandstone/
+- http://1000hz.github.io/bootstrap-validator/
+- http://www.guru99.com/first-selenium-test-script.html
